@@ -9,6 +9,8 @@ import { StudentTableComponent } from './components/students/student-table/stude
 import { SubjectFormComponent } from './components/subjects/subject-form/subject-form.component';
 import { SubjectPageComponent } from './components/subjects/subject-page/subject-page.component';
 import { SubjectTableComponent } from './components/subjects/subject-table/subject-table.component';
+import { HeaderComponent } from './components/header/header.component';
+import { PanelComponent } from './components/panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { SubjectTableComponent } from './components/subjects/subject-table/subje
     SubjectFormComponent,
     SubjectPageComponent,
     SubjectTableComponent,
+    HeaderComponent,
+    PanelComponent,
   ],
   imports: [
     BrowserModule,
