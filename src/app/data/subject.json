@@ -1,0 +1,44 @@
+[
+  {
+    "_id": "5ca713127a043e496afca091",
+    "subject": "Math",
+    "teacher": "Paige Sloan",
+    "room": 62,
+    "description": "occaecat eu cillum ut aliqua aute commodo sunt nisi aliquip aliqua occaecat pariatur irure pariatur anim aliqua elit do consequat"
+  },
+  {
+    "_id": "5ca713125e373006fd8e9185",
+    "subject": "Biology",
+    "teacher": "Durham Hatfield",
+    "room": 229,
+    "description": "ad ea id est dolore aute cillum deserunt consequat sit ullamco esse et enim laboris mollit occaecat id fugiat ex"
+  },
+  {
+    "_id": "5ca713127a6f52c5c1419c14",
+    "subject": "Chemistry",
+    "teacher": "Horne Mercer",
+    "room": 17,
+    "description": "qui officia in ex ut anim qui sint id elit sunt duis aliquip commodo aliquip irure culpa proident aliquip Lorem"
+  },
+  {
+    "_id": "5ca71312351e63a3368612b8",
+    "subject": "Programming",
+    "teacher": "Silva Christian",
+    "room": 299,
+    "description": "amet proident et nostrud sint elit commodo enim eu eu ea eiusmod dolor pariatur excepteur irure aute laboris aliquip proident"
+  },
+  {
+    "_id": "5ca7131273ff1ee98442980f",
+    "subject": "Physics",
+    "teacher": "Rebecca Kaufman",
+    "room": 48,
+    "description": "esse labore nostrud est ad est labore pariatur mollit incididunt incididunt tempor ullamco id occaecat Lorem consectetur mollit aliquip deserunt"
+  },
+  {
+    "_id": "5ca71312d4605232612522da",
+    "subject": "Russian",
+    "teacher": "Regina Lara",
+    "room": 297,
+    "description": "qui non eiusmod et non deserunt quis est non veniam consequat laboris mollit in reprehenderit dolor amet tempor do dolore"
+  }
+]
