@@ -32,6 +32,5 @@ export class StudentTableComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
-    console.log(this.dataSource);
   }
 }
