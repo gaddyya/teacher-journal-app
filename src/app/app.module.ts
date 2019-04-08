@@ -12,6 +12,7 @@ import { SubjectPageComponent } from './components/subjects/subject-page/subject
 import { SubjectTableComponent } from './components/subjects/subject-table/subject-table.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PanelComponent } from './components/panel/panel.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { PanelComponent } from './components/panel/panel.component';
     SubjectTableComponent,
     HeaderComponent,
     PanelComponent,
+    FormsModule,
   ],
   imports: [
     MatTableModule,
