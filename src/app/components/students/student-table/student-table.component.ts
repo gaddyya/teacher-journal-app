@@ -1,14 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatSort, MatTableDataSource} from '@angular/material';
-import Student from '../../../data/students.json'
-
-export interface IStudents {
-  id: number;
-  firstName: string;
-  lastName: string;
-  adress: string;
-  description: string;
-}
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort, MatTableDataSource } from '@angular/material';
+import Student from '../../../data/students.json';
+import IStudents from './IStudents';
 
 const STUDENTS: IStudents[] = Student;
 
@@ -19,12 +12,12 @@ const STUDENTS: IStudents[] = Student;
 })
 export class StudentTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'adress', 'description'];
-  dataSource = new MatTableDataSource(STUDENTS);
+  public displayedColumns: string[] = ['_id', 'firstName', 'lastName', 'adress', 'description'];
+  public dataSource: any = new MatTableDataSource(STUDENTS);
 
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort) public sort: MatSort;
 
-  ngOnInit() {
+  public ngOnInit (): void {
     this.dataSource.sort = this.sort;
   }
 }

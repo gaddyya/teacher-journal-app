@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {MatTableModule} from '@angular/material/table';
+import { NgModule, ViewChild } from '@angular/core';
+import { MatTableModule, MatSortModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './root/app.component';
@@ -12,7 +12,9 @@ import { SubjectPageComponent } from './components/subjects/subject-page/subject
 import { SubjectTableComponent } from './components/subjects/subject-table/subject-table.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PanelComponent } from './components/panel/panel.component';
-import { FormsModule } from '@angular/forms';
+
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -25,13 +27,14 @@ import { FormsModule } from '@angular/forms';
     SubjectTableComponent,
     HeaderComponent,
     PanelComponent,
-    FormsModule,
   ],
   imports: [
     MatTableModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserModule,
+    MatSortModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
