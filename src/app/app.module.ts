@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ViewChild } from '@angular/core';
 import { MatTableModule, MatSortModule } from '@angular/material';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './root/app.component';
 import { StudentFormComponent } from './components/students/student-form/student-form.component';
@@ -12,9 +11,10 @@ import { SubjectPageComponent } from './components/subjects/subject-page/subject
 import { SubjectTableComponent } from './components/subjects/subject-table/subject-table.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PanelComponent } from './components/panel/panel.component';
-
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormComponent } from './shared/components/form/form.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +27,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     SubjectTableComponent,
     HeaderComponent,
     PanelComponent,
+    FormComponent
   ],
   imports: [
     MatTableModule,
@@ -35,9 +36,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatSortModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: []
+  exports: [ ]
 })
 export class AppModule { }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-student-form',
@@ -7,6 +6,8 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./student-form.component.sass']
 })
 export class StudentFormComponent implements OnInit {
+
+  public INPUTNAMES: any = ['First Name',  'Last Name', 'Address', 'Description'];
 
   constructor() { }
 
