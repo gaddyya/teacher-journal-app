@@ -7,11 +7,12 @@ import { Component, OnInit, Output } from '@angular/core';
 })
 export class StudentFormComponent implements OnInit {
 
-  @Output() public INPUTNAMES: any[] = ['*First Name',  '*Last Name', 'Address'];
+  @Output() protected INPUTNAMES: any[] = ['*First Name',  '*Last Name', 'Address'];
 
   constructor() { }
 
   public ngOnInit(): void {
+    return;
   }
 
 }

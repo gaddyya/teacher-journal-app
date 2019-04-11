@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Subject from '../../../data/subjects.json';
 
 @Component({
   selector: 'app-subject-page',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubjectPageComponent implements OnInit {
 
+  public SUBJECTS: any[] = Subject;
+
   constructor() { }
 
-  ngOnInit() {
+  public button(): void {
+    console.log('div');
+  }
+
+  public ngOnInit(): void {
+    return;
   }
 
 }

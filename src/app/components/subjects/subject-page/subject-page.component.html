@@ -1,7 +1,10 @@
 
 <div class="container">
-  <p>
-    subject-page works!
-  </p>
+  <div>
+      <h3>List of Subjects:</h3>
+  </div>
+  <div class="tableOfSubjects">
+      <div class="subjects" (click)="button()" *ngFor='let subject of SUBJECTS'>{{ subject.subjectName | uppercase }}</div>
+  </div>
   <button routerLink="addSubjects"><i class="fa fa-plus" aria-hidden="true"></i></button>
 </div>

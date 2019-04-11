@@ -12,6 +12,7 @@ export class FormComponent implements OnInit {
   constructor() { }
 
   public ngOnInit(): void {
+    return;
   }
 
 }

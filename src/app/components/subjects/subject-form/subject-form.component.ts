@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-subject-form',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubjectFormComponent implements OnInit {
 
+  @Output() public INPUTNAMES: any[] = ['*Subject',  '*Teacher Name', 'Cabinet'];
+
   constructor() { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
+    return;
   }
 
 }
