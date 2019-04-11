@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-student-form',
@@ -7,12 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentFormComponent implements OnInit {
 
-  public INPUTNAMES: any = ['First Name',  'Last Name', 'Address', 'Description'];
+  @Output() public INPUTNAMES: any[] = ['*First Name',  '*Last Name', 'Address'];
 
   constructor() { }
 
   public ngOnInit(): void {
-    return;
   }
 
 }

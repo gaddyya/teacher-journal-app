@@ -2,31 +2,18 @@
   <div class="form">
     <h3>Add New Student:</h3>
     <form action="">
-      <p class="input">
+      
+      <p class="input" *ngFor='let inputName of inputNames'>
         <span>
-          *First name:
+          {{inputName}}:
         </span><input type="text">
       </p>
-      
-      <p class="input">
-        <span>
-          *Last name
-        </span><input type="text">
-      </p>
-      
-      <p class="input">
-        <span>
-          Address:
-        </span><input type="text">
-      </p>
-      
+
       <p class="input">
         <span>
           Description:
         </span><textarea name="" id="" cols="25" rows="5"></textarea>
       </p>
-
-      <p class="ng-for" *ngFor='let inputName of inputNames'>{{INPUTNAMES}}</p>
       
       <button>Add</button>
     </form>

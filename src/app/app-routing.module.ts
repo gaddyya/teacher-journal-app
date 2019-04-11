@@ -10,8 +10,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/students', pathMatch: 'full'},
   { path: 'students', component: StudentPageComponent },
   { path: 'subjects', component: SubjectPageComponent },
-  { path: 'addStudents', component: StudentFormComponent },
-  { path: 'addSubjects', component: SubjectFormComponent },
+  { path: 'students/addStudents', component: StudentFormComponent },
+  { path: 'subjects/addSubjects', component: SubjectFormComponent },
 
 ];
 
