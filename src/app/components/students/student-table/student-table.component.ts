@@ -12,7 +12,7 @@ const STUDENTS: IStudents[] = Student;
 })
 export class StudentTableComponent implements OnInit {
 
-  public displayedColumns: string[] = ['_id', 'firstName', 'lastName', 'address', 'description'];
+  public displayedColumns: string[] = ['id', 'firstName', 'lastName', 'address', 'description'];
   public dataSource: any = new MatTableDataSource(STUDENTS);
 
   @ViewChild(MatSort) public sort: MatSort;

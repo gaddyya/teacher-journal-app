@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { from } from 'rxjs';
 import { Routes, RouterModule } from '@angular/router';
 import { StudentPageComponent } from './components/students/student-page/student-page.component';
 import { SubjectPageComponent } from './components/subjects/subject-page/subject-page.component';

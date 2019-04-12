@@ -1,10 +1,10 @@
 
-<div class="container">
+<div class="subject-page">
   <div>
       <h3>List of Subjects:</h3>
   </div>
-  <div class="tableOfSubjects">
-      <div class="subjects" (click)="button()" *ngFor='let subject of SUBJECTS'>{{ subject.subjectName | uppercase }}</div>
+  <div class="subject-page__tableOfSubjects">
+      <div class="subject-page__subject" (click)="sayHello()" *ngFor="let subject of SUBJECTS">{{ subject.subjectName | uppercase }}</div>
   </div>
-  <button routerLink="addSubjects"><i class="fa fa-plus" aria-hidden="true"></i></button>
+  <app-button class="subject-page__app-button" routerLink="addSubjects"></app-button>
 </div>
