@@ -7,7 +7,7 @@ import { Component, Output } from '@angular/core';
 })
 export class SubjectFormComponent {
 
-  public INPUTNAMES: any[] = ['*Subject',  '*Teacher Name', 'Cabinet'];
+  public inputNames: string[] = ['*Subject',  '*Teacher Name', 'Cabinet'];
 
   constructor() { }
 }

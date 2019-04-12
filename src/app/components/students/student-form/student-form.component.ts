@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class StudentFormComponent {
 
-  protected INPUTNAMES: any[] = ['*First Name',  '*Last Name', 'Address'];
+  protected inputNames: string[] = ['*First Name',  '*Last Name', 'Address'];
 
   constructor() { }
 }

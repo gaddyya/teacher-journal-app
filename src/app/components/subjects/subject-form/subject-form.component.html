@@ -1,1 +1,21 @@
-<app-form [inputNames]=INPUTNAMES></app-form>
+<div class="subject-form">
+    <div class="subject-form__form">
+      <h3>Add New Student:</h3>
+      <form action="">
+        
+        <p class="subject-form__input" *ngFor="let inputName of inputNames">
+          <span>
+            {{inputName}}:
+          </span><input type="text">
+        </p>
+  
+        <p class="subject-form__input">
+          <span>
+            Description:
+          </span><textarea name="" id="" cols="25" rows="5"></textarea>
+        </p>
+        
+        <button>Add</button>
+      </form>
+    </div>
+  </div>
