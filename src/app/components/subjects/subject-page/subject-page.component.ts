@@ -8,9 +8,7 @@ import Subject from '../../../data/subjects.json';
 })
 export class SubjectPageComponent {
 
-  public SUBJECTS: any[] = Subject;
-
-  constructor() { }
+  public subjects: string[] = Subject.map((subjects) => subjects.subjectName);
 
   public sayHello(): void {
     console.log('Hello');

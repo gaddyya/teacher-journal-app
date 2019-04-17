@@ -1,6 +1,6 @@
 [
   {
-    "_id": "5caf161a10712e1780f128c9",
+    "id": "5caf161a10712e1780f128c9",
     "subjectName": "calithanics",
     "subjectDetails": {
       "room": 81,
@@ -9,7 +9,7 @@
     }
   },
   {
-    "_id": "5caf161a7fcc742a462198e2",
+    "id": "5caf161a7fcc742a462198e2",
     "subjectName": "physics",
     "subjectDetails": {
       "room": 33,
@@ -18,7 +18,7 @@
     }
   },
   {
-    "_id": "5caf161aba95286c718a3115",
+    "id": "5caf161aba95286c718a3115",
     "subjectName": "physics",
     "subjectDetails": {
       "room": 155,
@@ -27,7 +27,7 @@
     }
   },
   {
-    "_id": "5caf161a9679aa9942a81772",
+    "id": "5caf161a9679aa9942a81772",
     "subjectName": "chemistry",
     "subjectDetails": {
       "room": 85,
@@ -36,7 +36,7 @@
     }
   },
   {
-    "_id": "5caf161abaa009f640c171c1",
+    "id": "5caf161abaa009f640c171c1",
     "subjectName": "calithtanics",
     "subjectDetails": {
       "room": 163,
@@ -45,7 +45,7 @@
     }
   },
   {
-    "_id": "5caf161ac8c60ab67b9478cd",
+    "id": "5caf161ac8c60ab67b9478cd",
     "subjectName": "calithtanics",
     "subjectDetails": {
       "room": 41,
@@ -54,7 +54,7 @@
     }
   },
   {
-    "_id": "5caf161a36a944862c7000b3",
+    "id": "5caf161a36a944862c7000b3",
     "subjectName": "russian",
     "subjectDetails": {
       "room": 45,
@@ -63,7 +63,7 @@
     }
   },
   {
-    "_id": "5caf161ad02045d8a5a584d6",
+    "id": "5caf161ad02045d8a5a584d6",
     "subjectName": "calithtanics",
     "subjectDetails": {
       "room": 61,
@@ -72,7 +72,7 @@
     }
   },
   {
-    "_id": "5caf161a2d641cecc256c985",
+    "id": "5caf161a2d641cecc256c985",
     "subjectName": "physics",
     "subjectDetails": {
       "room": 265,
@@ -81,7 +81,7 @@
     }
   },
   {
-    "_id": "5caf161ac17e1a7f6d95a538",
+    "id": "5caf161ac17e1a7f6d95a538",
     "subjectName": "philosophy",
     "subjectDetails": {
       "room": 58,
