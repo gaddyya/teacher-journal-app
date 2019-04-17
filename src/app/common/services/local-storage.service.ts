@@ -6,12 +6,12 @@ import { Injectable } from '@angular/core';
 
 export class LocalStorageService {
 
-  protected stringifyItem(value: any): string {
+  protected stringifyItem(value: object[]): string {
     return JSON.stringify(value);
   }
 
   protected objectifyItem(value: string): object[] {
-    return Object.values(JSON.parse(value));
+    return JSON.parse(value);
   }
 
   protected setItem(key: string, value: string): void {
@@ -22,6 +22,10 @@ export class LocalStorageService {
     return localStorage.getItem(key);
   }
 
+  public length(): number {
+    return localStorage.length;
+  }
+
   public removeItem(key: string): void {
     localStorage.removeItem(key);
   }
@@ -30,7 +34,7 @@ export class LocalStorageService {
     localStorage.clear();
   }
 
-  public addData(value: any, key: string): void {
+  public addData(value: object[], key: string): void {
     let stringValue: string = this.stringifyItem(value);
     this.setItem(key, stringValue);
   }

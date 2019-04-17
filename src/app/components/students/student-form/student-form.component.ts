@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import IStudent from '../../../data/IStudents';
 import { LocalStorageService } from '../../../common/services/local-storage.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { LocalStorageService } from '../../../common/services/local-storage.serv
 })
 export class StudentFormComponent implements OnInit {
 
-  protected currentStudent: object = {
+  protected currentStudent: IStudent = {
     id: Math.floor(Math.random() * 100),
     firstName: '',
     lastName: '',
@@ -19,10 +20,11 @@ export class StudentFormComponent implements OnInit {
   constructor(private localStorageService: LocalStorageService) { }
 
   public saveData(): void {
-    let globalStudent: object[] = this.localStorageService.getData('students');
-    globalStudent.push(this.currentStudent);
-    this.localStorageService.addData(globalStudent, 'students');
-
+    if (this.currentStudent.firstName !== '') {
+      let globalStudent: object[] = this.localStorageService.getData('students');
+      globalStudent.push(this.currentStudent);
+      this.localStorageService.addData(globalStudent, 'students');
+    }
   }
 
   public ngOnInit(): void {

@@ -1,21 +1,33 @@
 <div class="subject-form">
     <div class="subject-form__form">
-      <h3>Add New Student:</h3>
-      <form action="">
-        
-        <p class="subject-form__input" *ngFor="let inputName of inputNames">
-          <span>
-            {{inputName}}:
-          </span><input type="text">
+      <h3>Add New Subject:</h3>
+      <form ngNativeValidate>
+        <p class="subject-form__input">
+            <span>
+              *Subject:
+          </span><input type="text" required (input)="currentSubject.subject=$event.target.value">
         </p>
   
         <p class="subject-form__input">
           <span>
-            Description:
-          </span><textarea name="" id="" cols="25" rows="5"></textarea>
+              *Teacher:
+          </span><input type="text" required (input)="currentSubject.teacher=$event.target.value">
         </p>
-        
-        <button>Add</button>
+  
+        <p class="subject-form__input">
+          <span>
+            Room:
+          </span><input type="text" required (input)="currentSubject.room=$event.target.value">
+        </p>
+    
+        <p class="subject-form__input">
+          <span>
+            Description:
+          </span><textarea cols="25" rows="5"></textarea>
+        </p>
+          
+        <button type="submit" (click)=saveData()>Add</button>
       </form>
     </div>
   </div>
+  <router-outlet></router-outlet>

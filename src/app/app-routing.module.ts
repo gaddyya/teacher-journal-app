@@ -4,6 +4,7 @@ import { StudentPageComponent } from './components/students/student-page/student
 import { SubjectPageComponent } from './components/subjects/subject-page/subject-page.component';
 import { StudentFormComponent } from './components/students/student-form/student-form.component';
 import { SubjectFormComponent } from './components/subjects/subject-form/subject-form.component';
+import { NoContentComponent } from './components/no-content/no-content.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/students', pathMatch: 'full'},
@@ -11,7 +12,7 @@ const routes: Routes = [
   { path: 'subjects', component: SubjectPageComponent },
   { path: 'students/addStudents', component: StudentFormComponent },
   { path: 'subjects/addSubjects', component: SubjectFormComponent },
-
+  { path: '**', component: NoContentComponent },
 ];
 
 @NgModule({

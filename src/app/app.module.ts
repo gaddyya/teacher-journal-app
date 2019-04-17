@@ -16,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './shared/components/form/form.component';
 import { ButtonComponent } from './shared/components/button/button.component';
+import { NoContentComponent } from './components/no-content/no-content.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ButtonComponent } from './shared/components/button/button.component';
     HeaderComponent,
     NavComponent,
     FormComponent,
-    ButtonComponent
+    ButtonComponent,
+    NoContentComponent
   ],
   imports: [
     MatTableModule,

@@ -24,10 +24,11 @@
         <p class="student-form__input">
           <span>
             Description:
-          </span><textarea cols="25" rows="5"></textarea>
+          </span><textarea cols="25" rows="5" (input)="currentStudent.description=$event.target.value"></textarea>
         </p>
         
-        <button type="submit" (click)=saveData(customerInput0)>Add</button>
+        <button routerLink="../../students" type="submit" (click)=saveData()>Add</button>
       </form>
     </div>
   </div>
+  <router-outlet></router-outlet>

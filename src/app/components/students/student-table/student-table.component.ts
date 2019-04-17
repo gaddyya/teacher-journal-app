@@ -35,8 +35,16 @@ export class StudentTableComponent implements OnInit {
     this.students = <IStudents[]>this.localStorageService.getData('students');
   }
 
+  public initializeTable(): void {
+    if ( this.localStorageService.length() === 0 ) {
+      this.setStudents();
+      this.saveDataToLocalStorage();
+      } else {this.setFromLocalStudents();
+    }
+  }
+
   public ngOnInit (): void {
-    this.setFromLocalStudents();
+    this.initializeTable();
     this.setDataSource();
     this.dataSource.sort = this.sort;
   }

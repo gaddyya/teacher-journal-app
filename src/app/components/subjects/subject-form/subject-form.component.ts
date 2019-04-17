@@ -1,4 +1,5 @@
-import { Component, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { LocalStorageService } from 'src/app/common/services/local-storage.service';
 
 @Component({
   selector: 'app-subject-form',
@@ -7,7 +8,18 @@ import { Component, Output } from '@angular/core';
 })
 export class SubjectFormComponent {
 
-  public inputNames: string[] = ['*Subject',  '*Teacher Name', 'Cabinet'];
+  protected currentSubject: object = {
+    id: Math.floor(Math.random() * 100),
+    subject: '',
+    teacher: '',
+    description: '',
+  };
 
-  constructor() { }
+  constructor(private localStorageService: LocalStorageService) {}
+
+  public saveData(): void {
+    let globalSubject: object[] = this.localStorageService.getData('subjects');
+    globalSubject.push(this.currentSubject);
+    this.localStorageService.addData(globalSubject, 'subjects');
+  }
 }
