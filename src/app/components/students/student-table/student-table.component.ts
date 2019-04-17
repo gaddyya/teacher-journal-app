@@ -19,7 +19,7 @@ export class StudentTableComponent implements OnInit {
 
   constructor(private dataService: DataService, private localStorageService: LocalStorageService) { }
 
-  protected getStudents(): void {
+  protected setStudents(): void {
     this.dataService.getStudents().subscribe(students => this.students = students);
   }
 
@@ -28,13 +28,16 @@ export class StudentTableComponent implements OnInit {
   }
 
   protected saveDataToLocalStorage(): void {
-    this.localStorageService.setItem('students', this.localStorageService.stringifyItem(this.students));
+    this.localStorageService.addData(this.students, 'students');
+  }
+
+  protected setFromLocalStudents(): void {
+    this.students = <IStudents[]>this.localStorageService.getData('students');
   }
 
   public ngOnInit (): void {
-    this.getStudents();
+    this.setFromLocalStudents();
     this.setDataSource();
-    this.saveDataToLocalStorage();
     this.dataSource.sort = this.sort;
   }
 }

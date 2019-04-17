@@ -1,5 +1,5 @@
 export default interface IStudents {
-    id: string;
+    id: number;
     firstName: string;
     lastName: string;
     address: string;

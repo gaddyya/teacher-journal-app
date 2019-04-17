@@ -6,11 +6,19 @@ import { Injectable } from '@angular/core';
 
 export class LocalStorageService {
 
-  public setItem(key: string, value: string): void {
+  protected stringifyItem(value: any): string {
+    return JSON.stringify(value);
+  }
+
+  protected objectifyItem(value: string): object[] {
+    return Object.values(JSON.parse(value));
+  }
+
+  protected setItem(key: string, value: string): void {
     localStorage.setItem(key, value);
   }
 
-  public getItem(key: string): string {
+  protected getItem(key: string): string {
     return localStorage.getItem(key);
   }
 
@@ -22,11 +30,14 @@ export class LocalStorageService {
     localStorage.clear();
   }
 
-  public stringifyItem(value: object): string {
-    return JSON.stringify(value);
+  public addData(value: any, key: string): void {
+    let stringValue: string = this.stringifyItem(value);
+    this.setItem(key, stringValue);
   }
 
-  public objectifyItem(value: string): object {
-    return JSON.parse(localStorage.getItem(value));
+  public getData(key: string): object[] {
+    let item: string = this.getItem(key);
+    let objectItem: object[] = this.objectifyItem(item);
+    return objectItem;
   }
 }
