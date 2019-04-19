@@ -34,6 +34,13 @@ export class LocalStorageService {
     localStorage.clear();
   }
 
+  public isElementOfLocal(key: string): boolean {
+    let length = localStorage.length;
+    for (let i = 0; i < length; i++){
+      return (localStorage.key(i) === key)
+    }
+  };
+
   public addData(value: object[], key: string): void {
     let stringValue: string = this.stringifyItem(value);
     this.setItem(key, stringValue);

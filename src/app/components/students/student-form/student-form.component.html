@@ -6,19 +6,19 @@
         <p class="student-form__input">
           <span>
             *First Name:
-          </span><input type="text" required (input)="currentStudent.firstName=$event.target.value">
+          </span><input type="text" required [(ngModel)]="currentStudent.firstName" name="First Name">
         </p>
 
         <p class="student-form__input">
           <span>
             *Last Name:
-          </span><input type="text" required (input)="currentStudent.lastName=$event.target.value">
+          </span><input type="text" required [(ngModel)]="currentStudent.lastName" name="Last Name">
         </p>
 
         <p class="student-form__input">
           <span>
             Address:
-          </span><input type="text" required (input)="currentStudent.address=$event.target.value">
+          </span><input type="text" required [(ngModel)]="currentStudent.address" name="Address">
         </p>
   
         <p class="student-form__input">
@@ -27,7 +27,7 @@
           </span><textarea cols="25" rows="5" (input)="currentStudent.description=$event.target.value"></textarea>
         </p>
         
-        <button routerLink="../../students" type="submit" (click)=saveData()>Add</button>
+        <button type="submit" (click)=saveData()>Add</button>
       </form>
     </div>
   </div>

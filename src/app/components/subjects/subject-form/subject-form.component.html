@@ -5,19 +5,19 @@
         <p class="subject-form__input">
             <span>
               *Subject:
-          </span><input type="text" required (input)="currentSubject.subject=$event.target.value">
+          </span><input type="text" required [(ngModel)]="currentSubject.subjectName" name="Subject Name">
         </p>
   
         <p class="subject-form__input">
           <span>
               *Teacher:
-          </span><input type="text" required (input)="currentSubject.teacher=$event.target.value">
+          </span><input type="text" required [(ngModel)]="currentSubject.subjectDetails.teacher" name="Subject Teacher">
         </p>
   
         <p class="subject-form__input">
           <span>
             Room:
-          </span><input type="text" required (input)="currentSubject.room=$event.target.value">
+          </span><input type="text" required [(ngModel)]="currentSubject.subjectDetails.room" name="Room">
         </p>
     
         <p class="subject-form__input">

@@ -1,3 +1,15 @@
 <p>
-  subject-table works!
+  {{subject}}
 </p>
+<p>
+  <span>
+    Date:
+  </span><input type="text" required (input)="currentDate['date']=$event.target.value">
+</p>
+<p>
+  <span>
+    Mark:
+  </span><input type="text" required (input)="currentDate['mark']=$event.target.value">
+</p>
+<button (click)='addDataToSubjectTable()'>Add</button>
+<button (click)='showSubjectTable()'>Show</button>

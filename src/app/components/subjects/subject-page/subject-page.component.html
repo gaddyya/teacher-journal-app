@@ -4,7 +4,7 @@
       <h3>List of Subjects:</h3>
   </div>
   <div class="subject-page__tableOfSubjects">
-      <div class="subject-page__subject" (click)="sayHello()" *ngFor="let subject of subjects">{{ subject | uppercase }}</div>
+      <div class="subject-page__subject" *ngFor="let subject of subjectsName" routerLink="/subjectsTable/{{subject}}">{{ subject | uppercase }}</div>
   </div>
   <app-button class="subject-page__app-button" routerLink="addSubjects"></app-button>
 </div>

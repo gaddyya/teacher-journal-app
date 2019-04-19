@@ -1,7 +1,7 @@
 [
   {
     "id": "5caf161a10712e1780f128c9",
-    "subjectName": "calithanics",
+    "subjectName": "calithenics",
     "subjectDetails": {
       "room": 81,
       "teacher": "Giles Wilkerson",
@@ -19,7 +19,7 @@
   },
   {
     "id": "5caf161aba95286c718a3115",
-    "subjectName": "physics",
+    "subjectName": "belarussian",
     "subjectDetails": {
       "room": 155,
       "teacher": "Booker Turner",
@@ -37,7 +37,7 @@
   },
   {
     "id": "5caf161abaa009f640c171c1",
-    "subjectName": "calithtanics",
+    "subjectName": "biology",
     "subjectDetails": {
       "room": 163,
       "teacher": "Patel Richards",
@@ -46,7 +46,7 @@
   },
   {
     "id": "5caf161ac8c60ab67b9478cd",
-    "subjectName": "calithtanics",
+    "subjectName": "art",
     "subjectDetails": {
       "room": 41,
       "teacher": "Beck Morrison",
@@ -64,7 +64,7 @@
   },
   {
     "id": "5caf161ad02045d8a5a584d6",
-    "subjectName": "calithtanics",
+    "subjectName": "geography",
     "subjectDetails": {
       "room": 61,
       "teacher": "Rich Estrada",
@@ -73,7 +73,7 @@
   },
   {
     "id": "5caf161a2d641cecc256c985",
-    "subjectName": "physics",
+    "subjectName": "musician",
     "subjectDetails": {
       "room": 265,
       "teacher": "Jody Guerra",
