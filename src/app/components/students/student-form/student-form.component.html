@@ -1,0 +1,33 @@
+<div class="student-form">
+    <div class="student-form__form">
+      <h3>Add New Student:</h3>
+      <form ngNativeValidate>
+        
+        <p class="student-form__input">
+          <span>
+            *First Name:
+          </span><input type="text" required (input)="currentStudent.firstName=$event.target.value">
+        </p>
+
+        <p class="student-form__input">
+          <span>
+            *Last Name:
+          </span><input type="text" required (input)="currentStudent.lastName=$event.target.value">
+        </p>
+
+        <p class="student-form__input">
+          <span>
+            Address:
+          </span><input type="text" required (input)="currentStudent.address=$event.target.value">
+        </p>
+  
+        <p class="student-form__input">
+          <span>
+            Description:
+          </span><textarea cols="25" rows="5"></textarea>
+        </p>
+        
+        <button type="submit" (click)=saveData(customerInput0)>Add</button>
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "5caf161a10712e1780f128c9",
+    "subjectName": "calithanics",
+    "subjectDetails": {
+      "room": 81,
+      "teacher": "Giles Wilkerson",
+      "description": "qui aute cillum sunt pariatur"
+    }
+  },
+  {
+    "id": "5caf161a7fcc742a462198e2",
+    "subjectName": "physics",
+    "subjectDetails": {
+      "room": 33,
+      "teacher": "Lane Crane",
+      "description": "in minim ut dolor aliqua"
+    }
+  },
+  {
+    "id": "5caf161aba95286c718a3115",
+    "subjectName": "physics",
+    "subjectDetails": {
+      "room": 155,
+      "teacher": "Booker Turner",
+      "description": "culpa consequat quis incididunt in"
+    }
+  },
+  {
+    "id": "5caf161a9679aa9942a81772",
+    "subjectName": "chemistry",
+    "subjectDetails": {
+      "room": 85,
+      "teacher": "Watts Powell",
+      "description": "dolore ipsum in voluptate fugiat"
+    }
+  },
+  {
+    "id": "5caf161abaa009f640c171c1",
+    "subjectName": "calithtanics",
+    "subjectDetails": {
+      "room": 163,
+      "teacher": "Patel Richards",
+      "description": "consequat nostrud dolore dolore occaecat"
+    }
+  },
+  {
+    "id": "5caf161ac8c60ab67b9478cd",
+    "subjectName": "calithtanics",
+    "subjectDetails": {
+      "room": 41,
+      "teacher": "Beck Morrison",
+      "description": "nisi consequat nisi aliqua tempor"
+    }
+  },
+  {
+    "id": "5caf161a36a944862c7000b3",
+    "subjectName": "russian",
+    "subjectDetails": {
+      "room": 45,
+      "teacher": "Dyer Bender",
+      "description": "nulla velit ex ullamco eu"
+    }
+  },
+  {
+    "id": "5caf161ad02045d8a5a584d6",
+    "subjectName": "calithtanics",
+    "subjectDetails": {
+      "room": 61,
+      "teacher": "Rich Estrada",
+      "description": "eiusmod incididunt pariatur velit qui"
+    }
+  },
+  {
+    "id": "5caf161a2d641cecc256c985",
+    "subjectName": "physics",
+    "subjectDetails": {
+      "room": 265,
+      "teacher": "Jody Guerra",
+      "description": "do sit ullamco fugiat amet"
+    }
+  },
+  {
+    "id": "5caf161ac17e1a7f6d95a538",
+    "subjectName": "philosophy",
+    "subjectDetails": {
+      "room": 58,
+      "teacher": "Nichols Delaney",
+      "description": "eiusmod est elit aute magna"
+    }
+  }
+]
