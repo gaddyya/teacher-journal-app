@@ -5,19 +5,19 @@
         <p class="subject-form__input">
             <span>
               *Subject:
-          </span><input type="text" required (input)="currentSubject.subject=$event.target.value">
+          </span><input type="text" required (input)="currentSubject.subjectName=$event.target.value">
         </p>
   
         <p class="subject-form__input">
           <span>
               *Teacher:
-          </span><input type="text" required (input)="currentSubject.teacher=$event.target.value">
+          </span><input type="text" required (input)="currentSubject.subjectDetails.teacher=$event.target.value">
         </p>
   
         <p class="subject-form__input">
           <span>
             Room:
-          </span><input type="text" required (input)="currentSubject.room=$event.target.value">
+          </span><input type="text" required (input)="currentSubject.subjectDetails.room=$event.target.value">
         </p>
     
         <p class="subject-form__input">

@@ -7,7 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class FormComponent {
 
-  @Input() protected inputNames: string[];
-
-  constructor() { }
+  @Input() public inputNames: string[];
 }

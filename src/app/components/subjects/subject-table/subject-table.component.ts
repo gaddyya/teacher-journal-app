@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-subject-table',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubjectTableComponent implements OnInit {
 
-  constructor() { }
+  public subject: string;
 
-  ngOnInit() {
+  constructor(private route: ActivatedRoute) {}
+
+  public ngOnInit(): void {
+    this.route.params.subscribe( data => {
+      this.subject = data.subjects;
+    });
   }
-
 }

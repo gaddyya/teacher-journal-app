@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './shared/components/form/form.component';
 import { ButtonComponent } from './shared/components/button/button.component';
 import { NoContentComponent } from './components/no-content/no-content.component';
+import { HighlightOurMainColorDirective } from './common/style/highlight-our-main-color.directive';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NoContentComponent } from './components/no-content/no-content.component
     NavComponent,
     FormComponent,
     ButtonComponent,
-    NoContentComponent
+    NoContentComponent,
+    HighlightOurMainColorDirective
   ],
   imports: [
     MatTableModule,

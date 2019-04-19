@@ -5,6 +5,7 @@ import { SubjectPageComponent } from './components/subjects/subject-page/subject
 import { StudentFormComponent } from './components/students/student-form/student-form.component';
 import { SubjectFormComponent } from './components/subjects/subject-form/subject-form.component';
 import { NoContentComponent } from './components/no-content/no-content.component';
+import { SubjectTableComponent } from './components/subjects/subject-table/subject-table.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/students', pathMatch: 'full'},
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'subjects', component: SubjectPageComponent },
   { path: 'students/addStudents', component: StudentFormComponent },
   { path: 'subjects/addSubjects', component: SubjectFormComponent },
+  { path: 'subjectsTable/:subjects', component: SubjectTableComponent },
   { path: '**', component: NoContentComponent },
 ];
 

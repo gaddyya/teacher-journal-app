@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LocalStorageService } from 'src/app/common/services/local-storage.service';
+import ISubject from '../../../data/ISubjects';
 
 @Component({
   selector: 'app-subject-form',
@@ -8,11 +9,14 @@ import { LocalStorageService } from 'src/app/common/services/local-storage.servi
 })
 export class SubjectFormComponent {
 
-  protected currentSubject: object = {
-    id: Math.floor(Math.random() * 100),
-    subject: '',
-    teacher: '',
-    description: '',
+  public currentSubject: ISubject = {
+    id: `${Math.floor(Math.random() * 100)}`,
+    subjectName: '',
+    subjectDetails: {
+      room: 0,
+      teacher: '',
+      description: '',
+    },
   };
 
   constructor(private localStorageService: LocalStorageService) {}

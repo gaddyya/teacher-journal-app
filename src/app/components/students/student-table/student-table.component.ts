@@ -3,6 +3,7 @@ import { MatSort, MatTableDataSource } from '@angular/material';
 import { DataService } from '../../../common/services/data.service';
 import IStudents from '../../../data/IStudents';
 import { LocalStorageService } from '../../../common/services/local-storage.service';
+import { DataSource } from '@angular/cdk/table';
 
 @Component({
   selector: 'app-student-table',
