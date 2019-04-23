@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import Subject from '../../../data/subjects.json';
 import { LocalStorageService } from 'src/app/common/services/local-storage.service.js';
 import { DataService } from '../../../common/services/data.service';
@@ -9,7 +9,7 @@ import ISubject from '../../../data/ISubjects';
   templateUrl: './subject-page.component.html',
   styleUrls: ['./subject-page.component.sass']
 })
-export class SubjectPageComponent implements OnInit {
+export class SubjectPageComponent {
 
   public subjectsName: string[];
   public subjects: ISubject[];
