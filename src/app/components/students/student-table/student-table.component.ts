@@ -10,7 +10,7 @@ import { LocalStorageService } from '../../../common/services/local-storage.serv
   styleUrls: ['./student-table.component.sass'],
   providers: [ DataService, LocalStorageService ],
 })
-export class StudentTableComponent implements OnInit {
+export class StudentTableComponent implements OnInit{
 
   public students: IStudents[];
   public displayedColumns: string[] = ['id', 'firstName', 'lastName', 'address', 'description'];
@@ -20,7 +20,13 @@ export class StudentTableComponent implements OnInit {
   constructor(private dataService: DataService, private localStorageService: LocalStorageService) { }
 
   protected setStudents(): void {
-    this.dataService.getStudents().subscribe(students => this.students = students);
+    this.dataService.getStudentsFromHttp().subscribe(student => {
+      this.students = student;
+      this.dataSource = new MatTableDataSource(this.students);
+      this.dataSource.sort = this.sort;
+      this.localStorageService.addData(this.students, 'students')
+
+    });
   }
 
   protected setDataSource(): void {
@@ -28,7 +34,7 @@ export class StudentTableComponent implements OnInit {
   }
 
   protected saveDataToLocalStorage(): void {
-    this.localStorageService.addData(this.students, 'students');
+    if(!this.students === undefined) {this.localStorageService.addData(this.students, 'students')}
   }
 
   protected setFromLocalStudents(): void {
@@ -36,16 +42,16 @@ export class StudentTableComponent implements OnInit {
   }
 
   public initializeTable(): void {
-    if ( this.localStorageService.length() === 0 ) {
+    if ( !this.localStorageService.isElementOfLocal('students') ) {
       this.setStudents();
-      this.saveDataToLocalStorage();
-      } else {this.setFromLocalStudents();
-    }
+      } else {
+        this.setFromLocalStudents();
+        this.setDataSource();
+        this.dataSource.sort = this.sort;
+      }
   }
 
   public ngOnInit (): void {
     this.initializeTable();
-    this.setDataSource();
-    this.dataSource.sort = this.sort;
   }
 }

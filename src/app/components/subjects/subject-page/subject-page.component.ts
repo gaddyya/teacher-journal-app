@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import Subject from '../../../data/subjects.json';
 import { LocalStorageService } from 'src/app/common/services/local-storage.service.js';
 import { DataService } from '../../../common/services/data.service';
 import ISubject from '../../../data/ISubjects';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-subject-page',
@@ -14,7 +14,10 @@ export class SubjectPageComponent {
   public subjectsName: string[];
   public subjects: ISubject[];
 
-  constructor(private dataSource: DataService, private localStorageService: LocalStorageService) { }
+  constructor(
+    private dataSource: DataService,
+    private localStorageService: LocalStorageService) {
+  }
 
   protected setSubjects(): void {
     this.dataSource.getSubject().subscribe(subjects => this.subjects = subjects);
@@ -25,6 +28,7 @@ export class SubjectPageComponent {
   }
 
   protected setFromLocalStudents(): void {
+    console.log('set from local');
     this.subjects = <ISubject[]>this.localStorageService.getData('subjects');
   }
 
@@ -35,7 +39,10 @@ export class SubjectPageComponent {
   protected initializeSubject(): void {
     if (this.localStorageService.isElementOfLocal('subjects')) {
       this.setFromLocalStudents();
-    } else { this.setSubjects(); }
+    } else {
+      this.setSubjects();
+      this.saveDataToLocalStorage();
+    }
     this.setSubjectName();
   }
 

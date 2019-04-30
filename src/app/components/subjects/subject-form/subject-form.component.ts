@@ -13,7 +13,7 @@ export class SubjectFormComponent {
     id: `${Math.floor(Math.random() * 100)}`,
     subjectName: '',
     subjectDetails: {
-      room: 0,
+      room: undefined,
       teacher: '',
       description: '',
     },

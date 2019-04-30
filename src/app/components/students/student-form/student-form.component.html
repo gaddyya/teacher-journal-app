@@ -1,33 +1,26 @@
 <div class="student-form">
     <div class="student-form__form">
       <h3>Add New Student:</h3>
-      <form ngNativeValidate>
-        
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+        <p class="student-form__input"><span>*First Name:</span> <input class="student-form__input" formControlName="firstName" placeholder="Ivan"></p>
+        <div class="student-form__required" appHighlightOurMainColor *ngIf="myForm.get('firstName').hasError('required')">
+            Provide a First Name!
+        </div>
+        <div class="student-form__required" appHighlightOurMainColor *ngIf="myForm.controls.firstName.hasError('pattern')">
+            Oops, incorect First Name, try to input Letter!
+        </div>
+        <p class="student-form__input"><span>*Last Name:</span> <input class="student-form__input" formControlName="lastName" placeholder="Ivanov"></p>
+        <div class="student-form__required" appHighlightOurMainColor *ngIf="myForm.get('lastName').hasError('required')">
+            And a Last Name, too)
+        </div>
+        <div class="student-form__required" appHighlightOurMainColor *ngIf="myForm.controls.lastName.hasError('pattern')">
+            Oops, incorect Last Name, try to input Letter!
+        </div>
+        <p class="student-form__input"><span>Address:</span> <input class="student-form__input" formControlName="address" placeholder="Carpenter St. 21-54"></p>
         <p class="student-form__input">
-          <span>
-            *First Name:
-          </span><input type="text" required [(ngModel)]="currentStudent.firstName" name="First Name">
+          <span>Description:</span> <textarea class="student-form__textarea" cols="23" rows="5" formControlName="description" placeholder="Bad Guy"></textarea>
         </p>
-
-        <p class="student-form__input">
-          <span>
-            *Last Name:
-          </span><input type="text" required [(ngModel)]="currentStudent.lastName" name="Last Name">
-        </p>
-
-        <p class="student-form__input">
-          <span>
-            Address:
-          </span><input type="text" required [(ngModel)]="currentStudent.address" name="Address">
-        </p>
-  
-        <p class="student-form__input">
-          <span>
-            Description:
-          </span><textarea cols="25" rows="5" (input)="currentStudent.description=$event.target.value"></textarea>
-        </p>
-        
-        <button type="submit" (click)=saveData()>Add</button>
+        <button class="student-form__button" type="submit" (click)=saveData()>Add</button>
       </form>
     </div>
   </div>

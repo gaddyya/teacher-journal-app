@@ -18,6 +18,10 @@ import { FormComponent } from './shared/components/form/form.component';
 import { ButtonComponent } from './shared/components/button/button.component';
 import { NoContentComponent } from './components/no-content/no-content.component';
 import { HighlightOurMainColorDirective } from './common/style/highlight-our-main-color.directive';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './common/services/in-memory-data.service';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -44,8 +48,12 @@ import { HighlightOurMainColorDirective } from './common/style/highlight-our-mai
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    ),
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
   exports: [ ]
 })

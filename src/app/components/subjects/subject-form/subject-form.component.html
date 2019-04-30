@@ -3,30 +3,22 @@
       <h3>Add New Subject:</h3>
       <form ngNativeValidate>
         <p class="subject-form__input">
-            <span>
-              *Subject:
-          </span><input type="text" required [(ngModel)]="currentSubject.subjectName" name="Subject Name">
+            <span>*Subject:</span><input type="text" required [(ngModel)]="currentSubject.subjectName" name="Subject Name">
         </p>
-  
+
         <p class="subject-form__input">
-          <span>
-              *Teacher:
-          </span><input type="text" required [(ngModel)]="currentSubject.subjectDetails.teacher" name="Subject Teacher">
+          <span>*Teacher:</span><input type="text" required [(ngModel)]="currentSubject.subjectDetails.teacher" name="Subject Teacher">
         </p>
-  
+
         <p class="subject-form__input">
-          <span>
-            Room:
-          </span><input type="text" required [(ngModel)]="currentSubject.subjectDetails.room" name="Room">
+          <span>Room:</span><input type="text" required [(ngModel)]="currentSubject.subjectDetails.room" name="Room">
         </p>
-    
+
         <p class="subject-form__input">
-          <span>
-            Description:
-          </span><textarea cols="25" rows="5"></textarea>
+          <span>Description:</span><textarea cols="25" rows="5"></textarea>
         </p>
-          
-        <button type="submit" (click)=saveData()>Add</button>
+
+        <button routerLink="/subjects" type="submit" (click)=saveData()>Add</button>
       </form>
     </div>
   </div>

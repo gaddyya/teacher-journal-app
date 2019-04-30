@@ -37,7 +37,7 @@ export class LocalStorageService {
   public isElementOfLocal(key: string): boolean {
     let length = localStorage.length;
     for (let i = 0; i < length; i++){
-      return (localStorage.key(i) === key)
+      if(localStorage.key(i) === key) return true;
     }
   };
 

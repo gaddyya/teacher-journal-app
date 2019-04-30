@@ -1,15 +1,29 @@
-<p>
-  {{subject}}
-</p>
-<p>
-  <span>
-    Date:
-  </span><input type="text" required (input)="currentDate['date']=$event.target.value">
-</p>
-<p>
-  <span>
-    Mark:
-  </span><input type="text" required (input)="currentDate['mark']=$event.target.value">
-</p>
-<button (click)='addDataToSubjectTable()'>Add</button>
-<button (click)='showSubjectTable()'>Show</button>
+<div class="subject-page">
+    <h4 appHighlightOurMainColor>
+      {{subject | uppercase}}
+    </h4>
+    <div class="subject-page__subject-content">
+        <table class="subject-page__subject-table">
+          <thead>
+            <tr>
+              <td class="subect-page__suject-table cell">First Name</td>
+              <td class="subect-page__suject-table cell">Last Name</td>
+              <td class="subect-page__suject-table cell">Average Mark</td>
+              <td class="subect-page__suject-table cell" *ngFor="let items of journal; let i = index">
+                  <input class="input-cell" [(ngModel)]="items.date" name="i">
+              </td>
+            </tr>
+          </thead>
+          <tr *ngFor="let student of subjectTable">
+            <td class="subect-page__suject-table cell">{{student.firstName}}</td>
+            <td class="subect-page__suject-table cell">{{student.lastName}}</td>
+            <td class="subect-page__suject-table cell">{{student.averageMark}}</td>
+            <ng-container *ngFor="let table of student.table; let i = index">
+                <td class="subect-page__suject-table cell"><input class="input-cell" [(ngModel)]=table.mark name="i"></td>
+            </ng-container>
+          </tr>
+        </table>
+    </div>
+    <app-button (click)="addDate(); $event.stopPropagation" class="subject-page__app-button"></app-button>
+    <button class="subject-page__button" (click)="showSubjectTable(); $event.stopPropagation()">show</button>
+</div>
