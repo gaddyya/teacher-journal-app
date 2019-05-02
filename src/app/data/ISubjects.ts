@@ -1,4 +1,4 @@
-export default interface ISubjects {
+export interface ISubjects {
     id: string;
     subjectName: string;
     subjectDetails: {

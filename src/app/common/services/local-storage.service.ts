@@ -6,19 +6,21 @@ import { Injectable } from '@angular/core';
 
 export class LocalStorageService {
 
-  protected stringifyItem(value: object[]): string {
+  // i use any, because there can come IStudents or ISubjects or ISubjcetTable or etc...
+  private stringifyItem(value: any[]): string {
     return JSON.stringify(value);
   }
 
-  protected objectifyItem(value: string): object[] {
+  // i use any, because there can come IStudents or ISubjects or ISubjcetTable or etc...
+  private objectifyItem(value: string): any[] {
     return JSON.parse(value);
   }
 
-  protected setItem(key: string, value: string): void {
+  private setItem(key: string, value: string): void {
     localStorage.setItem(key, value);
   }
 
-  protected getItem(key: string): string {
+  private getItem(key: string): string {
     return localStorage.getItem(key);
   }
 
@@ -35,20 +37,19 @@ export class LocalStorageService {
   }
 
   public isElementOfLocal(key: string): boolean {
-    let length = localStorage.length;
-    for (let i = 0; i < length; i++){
-      if(localStorage.key(i) === key) return true;
-    }
-  };
+    return !(localStorage.getItem(key) === null)
+  }
 
-  public addData(value: object[], key: string): void {
+  // i use any, because there can come IStudents or ISubjects or ISubjcetTable or etc...
+  public addData(value: any[], key: string): void {
     let stringValue: string = this.stringifyItem(value);
     this.setItem(key, stringValue);
   }
 
-  public getData(key: string): object[] {
+  // i use any, because there can come IStudents or ISubjects or ISubjcetTable or etc...
+  public getData(key: string): any[] {
     let item: string = this.getItem(key);
-    let objectItem: object[] = this.objectifyItem(item);
+    let objectItem: any[] = this.objectifyItem(item);
     return objectItem;
   }
 }

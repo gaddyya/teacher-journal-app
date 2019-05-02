@@ -1,4 +1,4 @@
-export default interface ISubjectTable {
+export interface ISubjectTable {
     firstName: string;
     lastName: string;
     table?: [{

@@ -9,8 +9,8 @@
               <td class="subect-page__suject-table cell">First Name</td>
               <td class="subect-page__suject-table cell">Last Name</td>
               <td class="subect-page__suject-table cell">Average Mark</td>
-              <td class="subect-page__suject-table cell" *ngFor="let items of journal; let i = index">
-                  <input class="input-cell" [(ngModel)]="items.date" name="i">
+              <td class="subect-page__suject-table cell input" *ngFor="let item of tableDate; let i = index">
+                  <input class="input-cell" [(ngModel)]="item.date" name="i">
               </td>
             </tr>
           </thead>
@@ -24,6 +24,6 @@
           </tr>
         </table>
     </div>
-    <app-button (click)="addDate(); $event.stopPropagation" class="subject-page__app-button"></app-button>
-    <button class="subject-page__button" (click)="showSubjectTable(); $event.stopPropagation()">show</button>
+    <app-button (click)="addDate(); $event.stopPropagation()" class="subject-page__app-button"></app-button>
+    <button class="subject-page__button" (click)="saveSubjectTable(); $event.stopPropagation()">save</button>
 </div>

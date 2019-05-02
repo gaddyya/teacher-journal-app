@@ -1,4 +1,4 @@
-export default interface IStudents {
+export interface IStudents {
     id: number;
     firstName: string;
     lastName: string;

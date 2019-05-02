@@ -1,27 +1,38 @@
 <div class="student-form">
-    <div class="student-form__form">
+  <div class="student-form__form">
+    <form [formGroup]="myForm">
       <h3>Add New Student:</h3>
-      <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
-        <p class="student-form__input"><span>*First Name:</span> <input class="student-form__input" formControlName="firstName" placeholder="Ivan"></p>
-        <div class="student-form__required" appHighlightOurMainColor *ngIf="myForm.get('firstName').hasError('required')">
-            Provide a First Name!
-        </div>
-        <div class="student-form__required" appHighlightOurMainColor *ngIf="myForm.controls.firstName.hasError('pattern')">
-            Oops, incorect First Name, try to input Letter!
-        </div>
-        <p class="student-form__input"><span>*Last Name:</span> <input class="student-form__input" formControlName="lastName" placeholder="Ivanov"></p>
-        <div class="student-form__required" appHighlightOurMainColor *ngIf="myForm.get('lastName').hasError('required')">
-            And a Last Name, too)
-        </div>
-        <div class="student-form__required" appHighlightOurMainColor *ngIf="myForm.controls.lastName.hasError('pattern')">
-            Oops, incorect Last Name, try to input Letter!
-        </div>
-        <p class="student-form__input"><span>Address:</span> <input class="student-form__input" formControlName="address" placeholder="Carpenter St. 21-54"></p>
-        <p class="student-form__input">
-          <span>Description:</span> <textarea class="student-form__textarea" cols="23" rows="5" formControlName="description" placeholder="Bad Guy"></textarea>
-        </p>
-        <button class="student-form__button" type="submit" (click)=saveData()>Add</button>
-      </form>
-    </div>
+      <mat-form-field>
+        <input class="student-form__input" matInput placeholder="First Name" formControlName="firstName" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="myForm.controls.firstName.hasError('pattern') && !myForm.controls.firstName.hasError('required')">
+          Please input only <strong>letter</strong>
+        </mat-error>
+        <mat-error *ngIf="myForm.controls.firstName.hasError('required')">
+          First Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <p></p>
+      <mat-form-field>
+        <input class="student-form__input" matInput placeholder="Last Name" formControlName="lastName" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="myForm.controls.lastName.hasError('pattern') && !myForm.controls.lastName.hasError('required')">
+          Please input only <strong>letter</strong>
+        </mat-error>
+        <mat-error *ngIf="myForm.controls.lastName.hasError('required')">
+          Last Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <p></p>
+      <mat-form-field>
+        <input class="student-form__input" matInput placeholder="Address" formControlName="address" >
+      </mat-form-field>
+      <p></p>
+      <mat-form-field>
+        <input class="student-form__input" matInput placeholder="Description" formControlName="description">
+      </mat-form-field>
+      <p></p>
+      <button class="student-form__button" mat-raised-button type="submit" (click)=saveData()>Save</button>
+      <p></p>
+    </form>
   </div>
-  <router-outlet></router-outlet>
+</div>
+<router-outlet></router-outlet>

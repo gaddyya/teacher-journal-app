@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
-import Student from '../../data/students.json';
-import IStudents from '../../data/IStudents';
-import Subject from '../../data/subjects.json';
-import ISubjects from '../../data/ISubjects';
+import { IStudents } from '../../data/IStudents';
+import { ISubjects } from '../../data/ISubjects';
 
 
 @Injectable({
@@ -25,14 +23,6 @@ export class DataService {
       console.error(error);
       return of(result as T);
     };
-  }
-
-  public getStudents(): Observable<IStudents[]> {
-    return of(Student);
-  }
-
-  public getSubject(): Observable<ISubjects[]> {
-    return of(Subject);
   }
 
   public getStudentsFromHttp(): Observable<IStudents[]> {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LocalStorageService } from 'src/app/common/services/local-storage.service';
-import ISubject from '../../../data/ISubjects';
+import { ISubjects } from '../../../data/ISubjects';
 
 @Component({
   selector: 'app-subject-form',
@@ -9,7 +9,7 @@ import ISubject from '../../../data/ISubjects';
 })
 export class SubjectFormComponent {
 
-  public currentSubject: ISubject = {
+  public currentSubject: ISubjects = {
     id: `${Math.floor(Math.random() * 100)}`,
     subjectName: '',
     subjectDetails: {
@@ -22,9 +22,8 @@ export class SubjectFormComponent {
   constructor(private localStorageService: LocalStorageService) {}
 
   public saveData(): void {
-    let globalSubject: ISubject[] = <ISubject[]>this.localStorageService.getData('subjects');
+    let globalSubject: ISubjects[] = <ISubjects[]>this.localStorageService.getData('subjects');
     globalSubject.push(this.currentSubject);
     this.localStorageService.addData(globalSubject, 'subjects');
-    console.log(this.localStorageService.getData('subjects'));
   }
 }

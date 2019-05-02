@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { LocalStorageService } from 'src/app/common/services/local-storage.service.js';
 import { DataService } from '../../../common/services/data.service';
-import ISubject from '../../../data/ISubjects';
-import { Router } from '@angular/router';
+import { ISubjects } from '../../../data/ISubjects';
 
 @Component({
   selector: 'app-subject-page',
@@ -12,38 +11,38 @@ import { Router } from '@angular/router';
 export class SubjectPageComponent {
 
   public subjectsName: string[];
-  public subjects: ISubject[];
+  public subjects: ISubjects[];
 
   constructor(
     private dataSource: DataService,
     private localStorageService: LocalStorageService) {
   }
 
-  protected setSubjects(): void {
-    this.dataSource.getSubject().subscribe(subjects => this.subjects = subjects);
+  private setSubjects(): void {
+    this.dataSource.getSubjectFromHttp().subscribe(subjects => {
+      this.subjects = subjects;
+      this.subjectsName = this.subjects.map(subject => subject.subjectName);
+      if (!(this.subjects === undefined)) {
+        this.localStorageService.addData(this.subjects, 'subjects');
+      }
+    });
   }
 
-  protected saveDataToLocalStorage(): void {
-    this.localStorageService.addData(this.subjects, 'subjects');
+  private setFromLocalStudents(): void {
+    this.subjects = <ISubjects[]>this.localStorageService.getData('subjects');
   }
 
-  protected setFromLocalStudents(): void {
-    console.log('set from local');
-    this.subjects = <ISubject[]>this.localStorageService.getData('subjects');
-  }
-
-  protected setSubjectName(): void {
+  private setSubjectName(): void {
     this.subjectsName = this.subjects.map(subject => subject.subjectName);
   }
 
-  protected initializeSubject(): void {
+  private initializeSubject(): void {
     if (this.localStorageService.isElementOfLocal('subjects')) {
       this.setFromLocalStudents();
+      this.setSubjectName();
     } else {
       this.setSubjects();
-      this.saveDataToLocalStorage();
     }
-    this.setSubjectName();
   }
 
   public ngOnInit(): void {
