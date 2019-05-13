@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataService } from 'src/app/common/services/data.service';
-import { LocalStorageService } from 'src/app/common/services/local-storage.service';
 import { DatePipe } from '@angular/common';
-import { ISubjectTable } from 'src/app/data/ISubjectsTable';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/redux/state/app.state';
+import { DataService } from 'src/app/common/services/data.service';
+import { Subject, Student } from 'src/app/common/entities';
+import { LoadSubjects, LoadStudents, UpdateSubject } from 'src/app/redux/actions';
 
 @Component({
   selector: 'app-subject-table',
@@ -13,92 +15,82 @@ import { ISubjectTable } from 'src/app/data/ISubjectsTable';
 export class SubjectTableComponent implements OnInit {
 
   public canSave: boolean = false;
-  public subject: string;
-  public studentsName: object[];
-  public subjectTable: ISubjectTable[];
+  public subjectName: string;
+  public subjectTable: any;
   public tableDate: Array<{}> = [];
   public newDate: string = this.dataPipe.transform(new Date, 'MM/dd');
+  public subject: Subject;
 
   constructor(
-    private route: ActivatedRoute,
     private dataService: DataService,
-    private localStorage: LocalStorageService,
-    private dataPipe: DatePipe) {}
+    private route: ActivatedRoute,
+    private store: Store<AppState>,
+    private dataPipe: DatePipe,
+    ) {}
 
   private setSubject(): void {
-    this.route.params.subscribe( data => {
-      this.subject = data.subjects;
+    this.route.params.subscribe( ({subjects}) => {
+      this.subjectName = subjects;
     });
   }
 
-  private setStudentsNameFromDataService(): void {
-    this.dataService.getStudentsFromHttp().subscribe(students => {
-      this.studentsName = students.map(student => {
-      return {
-        firstName: student.firstName,
-        lastName: student.lastName,
-        averageMark: undefined,
-        table: [{
-          date: this.newDate,
-          mark: undefined,
-          }],
-        };
+  private setStudentsName(): void {
+
+    if (this.store.source._value.studentsPage.students.length === 0 || this.store.source._value.subjectsPage.subjects.length === 0) {
+      this.dataService.getStudentsFromHttp().subscribe((data) => {
+        this.store.dispatch(new LoadStudents(<Student[]>data));
       });
-      this.tableDate.push({ date: this.newDate});
-      this.subjectTable = <ISubjectTable[]>this.studentsName;
-      }
-    );
-  }
+      this.dataService.getSubjectsFromHttp().subscribe((data) => {
+        this.store.dispatch(new LoadSubjects(<Subject[]>data));
+      });
+    }
 
-  private setSubjectTable(): void {
-    this.subjectTable = <ISubjectTable[]>this.studentsName;
-  }
+    this.store.select('studentsPage').subscribe(({students}) => {
+      this.subjectTable = students;
+    }).unsubscribe();
 
-  private setSubjectTableFromLocalStorage(): void {
-    this.subjectTable = this.localStorage.getData(this.subject);
-    this.tableDate = this.subjectTable[0].table.map(el => el);
+    this.store.select('subjectsPage').subscribe(({subjects}) => {
+      this.subject = subjects.filter( subject => subject['subjectName'] === this.subjectName )[0];
+      if (this.subject.journal.length === 0) {
+      this.subject.journal.push({
+        date: this.newDate,
+        marks: {}
+      });
+    }
+    }).unsubscribe();
   }
 
   private checkDuplicate(array: any): boolean {
-    let currentArray: [] = [];
-    if ((typeof array[0].date) === 'string') {
-      currentArray = array.map(el => el.date);
-    }
-    return new Set(currentArray).size === currentArray.length;
+    return new Set(array).size === array.length;
   }
 
   public addDate(): void {
-    this.tableDate.push({date: this.newDate});
-    this.subjectTable.forEach(subject => {
-      subject['table'].push({
-        date: this.newDate,
-        mark: undefined,
-      });
+    this.subject.journal.push({
+      date: this.newDate,
+      marks: {}
     });
   }
 
   public saveSubjectTable(): void {
-    if (this.checkDuplicate(this.tableDate)) {
-      this.subjectTable.forEach(element => element.table.forEach((diary, index) => {
-        diary.date = <string>this.tableDate[index]['date'];
-      }));
-      this.localStorage.addData(this.subjectTable, <string>this.subject);
+    let checkDate: string[] = [];
+    this.subject.journal.forEach(({date}) => {
+      checkDate = [...checkDate, date];
+    });
+
+    if (this.checkDuplicate(checkDate)) {
       this.canSave = true;
+      this.dataService.updateSubjectThroughHttp(this.subject.id, this.subject).subscribe((data) => {
+        this.store.dispatch(new UpdateSubject(<Subject>data));
+        });
     }
-    console.log(this.canSave);
   }
 
   public initializeSubjectTable(): void {
-    if (this.localStorage.isElementOfLocal(this.subject)) {
-      this.setSubjectTableFromLocalStorage();
-    } else {
-      this.setStudentsNameFromDataService();
-      this.setSubjectTable();
-    }
+    this.setSubject();
+    this.setStudentsName();
   }
 
   public ngOnInit(): void {
-    this.setSubject();
     this.initializeSubjectTable();
   }
 }

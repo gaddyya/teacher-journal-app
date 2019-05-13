@@ -1,0 +1,35 @@
+{
+  "students": [
+    {
+      "firstName": "Roman",
+      "lastName": "Dan",
+      "address": "ul.Kozlova 27-52",
+      "description": "",
+      "index": "3c42fd20-7599-11e9-8170-bdb379b456bd",
+      "id": 1
+    }
+  ],
+  "subjects": [
+    {
+      "subjectName": "Art",
+      "teacher": "Gibson",
+      "room": "231",
+      "description": "",
+      "journal": [
+        {
+          "date": "05/13",
+          "marks": {
+            "3c42fd20-7599-11e9-8170-bdb379b456bd": "12"
+          }
+        },
+        {
+          "date": "05/14",
+          "marks": {
+            "3c42fd20-7599-11e9-8170-bdb379b456bd": "23"
+          }
+        }
+      ],
+      "id": 1
+    }
+  ]
+}

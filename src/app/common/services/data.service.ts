@@ -1,11 +1,12 @@
+import { STUDENTS, SUBJECTS } from './../constants/URL';
+import { Student, Subject } from '../entities';
+import { AppState } from 'src/app/redux/state/app.state';
+
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
-
-import { IStudents } from '../../data/IStudents';
-import { ISubjects } from '../../data/ISubjects';
-
+import { catchError, map } from 'rxjs/operators';
+import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
+import { Store } from '@ngrx/store';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,14 @@ import { ISubjects } from '../../data/ISubjects';
 
 export class DataService {
 
-  private studentsUrl = 'api/STUDENTS';
-  private subjectsUrl = 'api/SUBJECTS';
+  public httpHeader: any = { headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })};
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private store: Store<AppState>,
+    ) {}
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -25,15 +30,38 @@ export class DataService {
     };
   }
 
-  public getStudentsFromHttp(): Observable<IStudents[]> {
-    return this.http.get<IStudents[]>(this.studentsUrl).pipe(
-      catchError(this.handleError<IStudents[]>('getStudentsFromHttp', []))
-    )
+  public getStudentsFromHttp(): Observable<Student[]> {
+    return this.http.get(STUDENTS).pipe(
+      map((data) => <Student[]>data),
+      catchError(this.handleError<Student[]>('getStudentsFromHttp', []))
+    );
   }
 
-  public getSubjectFromHttp(): Observable<ISubjects[]> {
-    return this.http.get<ISubjects[]>(this.subjectsUrl).pipe(
-      catchError(this.handleError<ISubjects[]>('getSubjectsFromHttp', []))
+  public getSubjectsFromHttp(): Observable<Subject[]> {
+    return this.http.get(SUBJECTS).pipe(
+      map((data) => <Subject[]>data),
+      catchError(this.handleError<Subject[]>('getSubjectsThroughHttp', []))
+    );
+  }
+
+  public addStudentThroughHttp(student: Student): Observable<Student> {
+    return this.http.post(STUDENTS, JSON.stringify(student), this.httpHeader).pipe(
+      map((data) => <Student><unknown>data),
+      catchError(this.handleError<Student>('addStudentThroughHttp'))
+    );
+  }
+
+  public addSubjectThroughHttp(subject: Subject): Observable<Subject> {
+    return this.http.post(SUBJECTS, JSON.stringify(subject), this.httpHeader).pipe(
+      map((data) => <Subject><unknown>data),
+      catchError(this.handleError<Subject>('addSubjectThroughHttp'))
+    );
+  }
+
+  public updateSubjectThroughHttp(id: number, subject: Subject): Observable<any> {
+    return this.http.put(SUBJECTS + '/' + id, subject, this.httpHeader).pipe(
+      map( (data) => data),
+      catchError(this.handleError<Subject>('updateSubjectThroughHttp'))
     );
   }
 }

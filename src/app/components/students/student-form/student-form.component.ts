@@ -1,16 +1,12 @@
-import { IStudents } from '../../../data/IStudents';
-import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from '../../../common/services/local-storage.service';
+import { Student } from './../../../common/entities/Student.model';
+import { MyErrorStateMatcher } from 'src/app/common/errorCatcher/myErrorCatcher';
+import { DataService } from 'src/app/common/services/data.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, FormGroupDirective, FormControl, NgForm } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  public isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted: boolean = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AddStudent } from 'src/app/redux/actions';
+import { AppState } from 'src/app/redux/state';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-student-form',
@@ -19,24 +15,18 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class StudentFormComponent implements OnInit {
 
-  public myForm: FormGroup;
-  public matcher: any = new MyErrorStateMatcher();
-
-  public currentStudent: IStudents = {
-    id: Math.floor(Math.random() * 100),
-    firstName: '',
-    lastName: '',
-    address: '',
-    description: ''
-  };
+  public addStudentForm: FormGroup;
+  public matcher: MyErrorStateMatcher = new MyErrorStateMatcher();
 
   constructor(
-    private localStorageService: LocalStorageService,
+    private dataService: DataService,
     private router: Router,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private store: Store<AppState>
+    ) { }
 
   private createForm(): void {
-    this.myForm = this.formBuilder.group({
+    this.addStudentForm = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.pattern('[a-zA-Z, а-яА-Я]*')]],
       lastName: ['', [Validators.required, Validators.pattern('[a-zA-Z, а-яА-Я]*')]],
       address: [''],
@@ -44,26 +34,24 @@ export class StudentFormComponent implements OnInit {
     });
   }
 
-  private getDataFromField(): void {
-    this.currentStudent.firstName = this.myForm.value.firstName;
-    this.currentStudent.lastName = this.myForm.value.lastName;
-    this.currentStudent.address = this.myForm.value.address;
-    this.currentStudent.description = this.myForm.value.description;
-  }
-
   public saveData(): void {
-    this.getDataFromField();
-    if ((this.currentStudent.firstName !== '') && (this.currentStudent.lastName !== '')) {
-      // i use any, because there can come IStudents or ISubjects or ISubjcetTable or etc...
-      let globalStudent: IStudents[] = this.localStorageService.getData('students');
-      globalStudent.push(this.currentStudent);
-      this.localStorageService.addData(globalStudent, 'students');
+    const student: Student = new Student(
+      this.addStudentForm.value.firstName,
+      this.addStudentForm.value.lastName,
+      this.addStudentForm.value.address,
+      this.addStudentForm.value.description,
+      );
+
+    if ((this.addStudentForm.value.firstName !== '') && (this.addStudentForm.value.lastName !== '')) {
+      this.dataService.addStudentThroughHttp(student).subscribe( (data) => {
+        console.log(data);
+        this.store.dispatch(new AddStudent(<Student>data));
+      });
       this.router.navigate(['students']);
     }
   }
 
   public ngOnInit(): void {
     this.createForm();
-    this.localStorageService.getData('students');
   }
 }

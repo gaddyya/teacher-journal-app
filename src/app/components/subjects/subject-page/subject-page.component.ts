@@ -1,7 +1,9 @@
+import { LoadSubjects } from './../../../redux/actions/subjects.actions';
+import { DataService } from './../../../common/services/data.service';
 import { Component } from '@angular/core';
-import { LocalStorageService } from 'src/app/common/services/local-storage.service.js';
-import { DataService } from '../../../common/services/data.service';
-import { ISubjects } from '../../../data/ISubjects';
+import { Subject } from 'src/app/common/entities';
+import { AppState } from 'src/app/redux/state/app.state';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-subject-page',
@@ -11,38 +13,24 @@ import { ISubjects } from '../../../data/ISubjects';
 export class SubjectPageComponent {
 
   public subjectsName: string[];
-  public subjects: ISubjects[];
+  public subjects: Subject[];
 
   constructor(
-    private dataSource: DataService,
-    private localStorageService: LocalStorageService) {
-  }
-
-  private setSubjects(): void {
-    this.dataSource.getSubjectFromHttp().subscribe(subjects => {
-      this.subjects = subjects;
-      this.subjectsName = this.subjects.map(subject => subject.subjectName);
-      if (!(this.subjects === undefined)) {
-        this.localStorageService.addData(this.subjects, 'subjects');
-      }
-    });
-  }
-
-  private setFromLocalStudents(): void {
-    this.subjects = <ISubjects[]>this.localStorageService.getData('subjects');
-  }
-
-  private setSubjectName(): void {
-    this.subjectsName = this.subjects.map(subject => subject.subjectName);
+    private store: Store<AppState>,
+    private dataService: DataService,
+    ) {
   }
 
   private initializeSubject(): void {
-    if (this.localStorageService.isElementOfLocal('subjects')) {
-      this.setFromLocalStudents();
-      this.setSubjectName();
-    } else {
-      this.setSubjects();
+    if (this.store.source._value.subjectsPage.subjects.length === 0) {
+      this.dataService.getSubjectsFromHttp().subscribe(data => {
+        this.store.dispatch(new LoadSubjects(data));
+      });
     }
+    this.store.select('subjectsPage').subscribe(({subjects}) => {
+      this.subjects = subjects;
+      this.subjectsName = this.subjects.map(subject => subject.subjectName);
+    });
   }
 
   public ngOnInit(): void {

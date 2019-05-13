@@ -1,4 +1,10 @@
-<header>
-  <i class="fas fa-bookmark"></i>
-  <h1>Teacher Journal</h1>
+<header class="header" >
+  <i class="header__i fas fa-bookmark"></i>
+  <h1 class="header__h1" routerLink="/students">Teacher Journal</h1>
+  <div class="header__changeLanguage">
+    <button mat-button class="header__changeLanguage header__button" (click)="switchLanguage(language)">
+      <mat-icon class="header__changeLanguage header__button-icon">language</mat-icon>{{language}}
+    </button>
+  </div>
+  
 </header>

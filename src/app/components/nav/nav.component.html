@@ -1,8 +1,8 @@
 <nav>
-  <div class="container">
-    <button routerLink="/students" [routerLinkActive]="'active'">Students</button>
-    <button routerLink="/subjects" [routerLinkActive]="'active'">Subjects</button>
-    <button routerLink="/statistics" [routerLinkActive]="'active'">Statistics</button>
-    <button routerLink="/export" [routerLinkActive]="'active'">Export</button>
+  <div class="header-nav">
+    <button class="header-nav__button" routerLink="/students" [routerLinkActive]="'active'">{{ 'Students' | translate }}</button>
+    <button class="header-nav__button" routerLink="/subjects" [routerLinkActive]="'active'">{{ 'Subjects' | translate }}</button>
+    <button class="header-nav__button" routerLink="/statistics" [routerLinkActive]="'active'">{{'Statistics' | translate }}</button>
+    <button class="header-nav__button" routerLink="/export" [routerLinkActive]="'active'">{{'Export' | translate}}</button>
   </div>
 </nav>

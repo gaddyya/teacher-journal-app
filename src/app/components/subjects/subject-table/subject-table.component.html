@@ -1,15 +1,16 @@
 <div class="subject-page">
-    <h4 appHighlightOurMainColor>
-      {{subject | uppercase}}
+    <h4 class="subject-page__title" appHighlightOurMainColor>
+        {{subjectName | uppercase | translate}}
     </h4>
+    <app-button (click)="addDate(); $event.stopPropagation()" class="subject-page__app-button"></app-button>
     <div class="subject-page__subject-content">
         <table class="subject-page__subject-table">
           <thead>
             <tr>
-              <td class="subect-page__suject-table cell">First Name</td>
-              <td class="subect-page__suject-table cell">Last Name</td>
-              <td class="subect-page__suject-table cell">Average Mark</td>
-              <td class="subect-page__suject-table cell input" *ngFor="let item of tableDate; let i = index">
+              <td class="subect-page__suject-table cell">{{'First Name' | translate}}</td>
+              <td class="subect-page__suject-table cell">{{'Last Name' | translate}}</td>
+              <td class="subect-page__suject-table cell">{{'Average Mark' | translate}}</td>
+              <td class="subect-page__suject-table cell input" *ngFor="let item of subject.journal; let i = index">
                   <input class="input-cell" [(ngModel)]="item.date" name="i">
               </td>
             </tr>
@@ -18,12 +19,11 @@
             <td class="subect-page__suject-table cell">{{student.firstName}}</td>
             <td class="subect-page__suject-table cell">{{student.lastName}}</td>
             <td class="subect-page__suject-table cell">{{student.averageMark}}</td>
-            <ng-container *ngFor="let table of student.table; let i = index">
-                <td class="subect-page__suject-table cell"><input class="input-cell" [(ngModel)]=table.mark name="i"></td>
-            </ng-container>
+            <td class="subect-page__suject-table cell" *ngFor="let el of subject.journal; let i = index">
+                <input class="input-cell" [(ngModel)]="el.marks[student.index]" name="i">
+            </td>
           </tr>
         </table>
     </div>
-    <app-button (click)="addDate(); $event.stopPropagation()" class="subject-page__app-button"></app-button>
-    <button class="subject-page__button" (click)="saveSubjectTable(); $event.stopPropagation()">save</button>
+    <button mat-raised-button class="subject-page__button" (click)="saveSubjectTable(); $event.stopPropagation()">{{'Save' | translate}}</button>
 </div>

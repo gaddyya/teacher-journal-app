@@ -1,36 +1,36 @@
 <div class="student-form">
   <div class="student-form__form">
-    <form [formGroup]="myForm">
-      <h3>Add New Student:</h3>
+    <form [formGroup]="addStudentForm">
+      <h3>{{'Add New Student' | translate}}:</h3>
       <mat-form-field>
-        <input class="student-form__input" matInput placeholder="First Name" formControlName="firstName" [errorStateMatcher]="matcher">
-        <mat-error *ngIf="myForm.controls.firstName.hasError('pattern') && !myForm.controls.firstName.hasError('required')">
-          Please input only <strong>letter</strong>
+        <input class="student-form__input" matInput placeholder="{{'First Name' | translate}}" formControlName="firstName" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="addStudentForm.controls.firstName.hasError('pattern') && !addStudentForm.controls.firstName.hasError('required')">
+          {{'Please input only' | translate}} <strong>{{'letter' | translate}}</strong>
         </mat-error>
-        <mat-error *ngIf="myForm.controls.firstName.hasError('required')">
-          First Name is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-      <p></p>
-      <mat-form-field>
-        <input class="student-form__input" matInput placeholder="Last Name" formControlName="lastName" [errorStateMatcher]="matcher">
-        <mat-error *ngIf="myForm.controls.lastName.hasError('pattern') && !myForm.controls.lastName.hasError('required')">
-          Please input only <strong>letter</strong>
-        </mat-error>
-        <mat-error *ngIf="myForm.controls.lastName.hasError('required')">
-          Last Name is <strong>required</strong>
+        <mat-error *ngIf="addStudentForm.controls.firstName.hasError('required')">
+          {{'First Name is' | translate}} <strong>{{'required' | translate}}</strong>
         </mat-error>
       </mat-form-field>
       <p></p>
       <mat-form-field>
-        <input class="student-form__input" matInput placeholder="Address" formControlName="address" >
+        <input class="student-form__input" matInput placeholder="{{'Last Name' | translate}}" formControlName="lastName" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="addStudentForm.controls.lastName.hasError('pattern') && !addStudentForm.controls.lastName.hasError('required')">
+          {{'Please input only' | translate}} <strong>{{'letter' | translate}}</strong>
+        </mat-error>
+        <mat-error *ngIf="addStudentForm.controls.lastName.hasError('required')">
+          {{'Last Name is' | translate}} <strong>{{'required' | translate}}</strong>
+        </mat-error>
       </mat-form-field>
       <p></p>
       <mat-form-field>
-        <input class="student-form__input" matInput placeholder="Description" formControlName="description">
+        <input class="student-form__input" matInput placeholder="{{'Address' | translate}}" formControlName="address" >
       </mat-form-field>
       <p></p>
-      <button class="student-form__button" mat-raised-button type="submit" (click)=saveData()>Save</button>
+      <mat-form-field>
+        <input class="student-form__input" matInput placeholder="{{'Description' | translate}}" formControlName="description">
+      </mat-form-field>
+      <p></p>
+      <button class="student-form__button" mat-raised-button type="submit" (click)=saveData()>{{'Save' | translate}}</button>
       <p></p>
     </form>
   </div>
