@@ -1,5 +1,51 @@
 <div class="statistics-page">
-  <p>works</p>
-  <div class="statistics-page__menu"></div>
-  <div class="statistics-page__diagram"></div>
+  <div class="statistics-menu">
+    <div class="statistics-menu__students">
+      <button class="statistics-menu__button" mat-button>students</button>
+    </div>
+    <div class="statistics-menu__subjects">
+      <button class="statistics-menu__button" mat-button>subjects</button>
+    </div>
+    <div class="statistics-menu__content">
+      <mat-form-field class="statistics-menu__dropdown">
+        <mat-label>Choose Want You Want To See</mat-label>
+        <mat-select [formControl]="statisticsMenu" multiple>
+          <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+            <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+              <mat-option >
+                <mat-checkbox class="checklist-leaf-node"
+                  [checked]="checklistSelection.isSelected(node)"
+                  (change)="leafItemSelectionToggle(node)">{{node.item}}</mat-checkbox>
+                </mat-option>
+            </mat-tree-node>
+      
+            <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+              <mat-option >
+                <button mat-icon-button matTreeNodeToggle
+                  [attr.aria-label]="'toggle ' + node.filename">
+                  <mat-icon class="mat-icon-rtl-mirror">
+                  {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                  </mat-icon>
+                </button>
+                <mat-checkbox [checked]="descendantsAllSelected(node)"
+                  [indeterminate]="descendantsPartiallySelected(node)"
+                  (change)="itemSelectionToggle(node)">{{node.item}}
+                </mat-checkbox>
+              </mat-option>
+            </mat-tree-node>
+          </mat-tree>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="statistics-page__diagram">
+    <p> 
+    Reiciendis sit possimus minima voluptate iste animi laborum aliquam nulla sint! Assumenda quam inventore debitis facere ipsa hic? Delectus ipsam est accusamus consequuntur atque et velit dolorum quam eaque a.
+    Rem, possimus assumenda? Ducimus debitis unde distinctio illo dicta eum voluptas natus odit accusamus. Eveniet, ad? Eum, quibusdam ipsum. Consectetur, provident. Libero saepe nisi esse ex quae reprehenderit itaque quos.
+    Ipsam magnam magni dolore eaque possimus, at nemo rem voluptas exercitationem nostrum quia atque sequi aliquam beatae suscipit ipsa! Distinctio quisquam veritatis accusantium corporis vero harum blanditiis recusandae nostrum ratione.
+    Harum explicabo laborum quaerat aspernatur eveniet esse in dolorem consectetur sunt doloremque optio soluta odio, deserunt repellat totam illo voluptatem porro, praesentium sint, voluptatibus perspiciatis quisquam sequi non. Veritatis, facilis!
+    Aperiam voluptatem nihil facere quae quasi dignissimos iste alias ut itaque sit ullam tenetur exercitationem dolore sapiente, corrupti aspernatur vero labore non. Sed voluptatem neque officia reiciendis, corrupti ipsa iure!
+    Accusantium praesentium porro odit consectetur at illo, obcaecati pariatur quibusdam neque suscipit et minus tempora sunt, sed explicabo veritatis, odio consequatur animi? Ex deleniti dolor reprehenderit neque ipsa odit inventore.
+    Architecto possimus aliquid laudantium nesciunt quia corrupti reiciendis rerum, animi accusamus repellendus quam vero minus! Quas impedit, necessitatibus laborum explicabo fuga inventore similique dolores in sit animi voluptatum fugiat eum. </p>  
+  </div>
 </div>

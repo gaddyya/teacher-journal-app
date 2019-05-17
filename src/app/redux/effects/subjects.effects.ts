@@ -1,3 +1,4 @@
+import { UpdateSubject } from './../actions/subjects.actions';
 import { Subject } from 'src/app/common/entities';
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
@@ -9,9 +10,24 @@ import { SUBJECTS_ACTION, AddSubject } from '../actions/subjects.actions';
 
 export class SubjectsEffects {
 
-    @Effect() public loadStudents: Actions = this.actions$.pipe(
+    @Effect() public loadSubjects: Actions = this.actions$.pipe(
         ofType(SUBJECTS_ACTION.ADD_SUBJECT),
         switchMap((action: AddSubject) => {
+            return this.dataService.getSubjectsFromHttp();
+        }),
+        mergeMap((subjects: Subject[]) => {
+            return [
+                {
+                    type: SUBJECTS_ACTION.LOAD_SUBJECTS,
+                    payload: subjects
+                }
+            ];
+        })
+    );
+
+    @Effect() public updateSubject: Actions = this.actions$.pipe(
+        ofType(SUBJECTS_ACTION.UPDATE_SUBJECT),
+        switchMap((action: UpdateSubject) => {
             return this.dataService.getSubjectsFromHttp();
         }),
         mergeMap((subjects: Subject[]) => {

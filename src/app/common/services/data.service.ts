@@ -1,12 +1,9 @@
 import { STUDENTS, SUBJECTS } from './../constants/URL';
 import { Student, Subject } from '../entities';
-import { AppState } from 'src/app/redux/state/app.state';
-
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
-import { Store } from '@ngrx/store';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +17,6 @@ export class DataService {
 
   constructor(
     private http: HttpClient,
-    private store: Store<AppState>,
     ) {}
 
   private handleError<T> (operation = 'operation', result?: T) {
@@ -58,9 +54,9 @@ export class DataService {
     );
   }
 
-  public updateSubjectThroughHttp(id: number, subject: Subject): Observable<any> {
+  public updateSubjectThroughHttp(id: number, subject: Subject): Observable<Subject> {
     return this.http.put(SUBJECTS + '/' + id, subject, this.httpHeader).pipe(
-      map( (data) => data),
+      map( (data) => <Subject><unknown>data),
       catchError(this.handleError<Subject>('updateSubjectThroughHttp'))
     );
   }

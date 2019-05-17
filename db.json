@@ -7,29 +7,146 @@
       "description": "",
       "index": "3c42fd20-7599-11e9-8170-bdb379b456bd",
       "id": 1
+    },
+    {
+      "firstName": "Dima",
+      "lastName": "Nosov",
+      "address": "Gebelva 23-23",
+      "description": "",
+      "index": "e8409750-764c-11e9-97f9-e9db76c7e9a5",
+      "id": 2
+    },
+    {
+      "firstName": "Denis",
+      "lastName": "Afansyiev",
+      "address": "Gibsona 23-55",
+      "description": "",
+      "index": "fb5bcbc0-764c-11e9-97f9-e9db76c7e9a5",
+      "id": 3
+    },
+    {
+      "firstName": "Igor ",
+      "lastName": "Petrovich",
+      "address": "Korzsha 4-23",
+      "description": "",
+      "index": "7bf85bc0-7686-11e9-a0a6-4b167bd2ddc5",
+      "id": 4
     }
   ],
   "subjects": [
     {
       "subjectName": "Art",
-      "teacher": "Gibson",
-      "room": "231",
+      "teacher": "Johnson",
+      "room": "123",
       "description": "",
+      "averageMarks": {
+        "3c42fd20-7599-11e9-8170-bdb379b456bd": "7.5",
+        "e8409750-764c-11e9-97f9-e9db76c7e9a5": "9.0",
+        "fb5bcbc0-764c-11e9-97f9-e9db76c7e9a5": "8.0",
+        "7bf85bc0-7686-11e9-a0a6-4b167bd2ddc5": "8.0"
+      },
       "journal": [
         {
-          "date": "05/13",
+          "date": "05/15",
           "marks": {
-            "3c42fd20-7599-11e9-8170-bdb379b456bd": "12"
+            "3c42fd20-7599-11e9-8170-bdb379b456bd": "6",
+            "7bf85bc0-7686-11e9-a0a6-4b167bd2ddc5": "",
+            "e8409750-764c-11e9-97f9-e9db76c7e9a5": ""
           }
         },
         {
-          "date": "05/14",
+          "date": "05/16",
           "marks": {
-            "3c42fd20-7599-11e9-8170-bdb379b456bd": "23"
+            "3c42fd20-7599-11e9-8170-bdb379b456bd": "9",
+            "e8409750-764c-11e9-97f9-e9db76c7e9a5": "9",
+            "fb5bcbc0-764c-11e9-97f9-e9db76c7e9a5": "8",
+            "7bf85bc0-7686-11e9-a0a6-4b167bd2ddc5": "8"
           }
         }
       ],
       "id": 1
+    },
+    {
+      "subjectName": "Math",
+      "teacher": "Gibson",
+      "room": "42",
+      "description": "",
+      "averageMarks": {
+        "3c42fd20-7599-11e9-8170-bdb379b456bd": "7.5",
+        "e8409750-764c-11e9-97f9-e9db76c7e9a5": "8.0",
+        "fb5bcbc0-764c-11e9-97f9-e9db76c7e9a5": 0,
+        "7bf85bc0-7686-11e9-a0a6-4b167bd2ddc5": 0
+      },
+      "journal": [
+        {
+          "date": "05/15",
+          "marks": {
+            "3c42fd20-7599-11e9-8170-bdb379b456bd": "8"
+          }
+        },
+        {
+          "date": "05/16",
+          "marks": {
+            "3c42fd20-7599-11e9-8170-bdb379b456bd": "7",
+            "e8409750-764c-11e9-97f9-e9db76c7e9a5": "8"
+          }
+        },
+        {
+          "date": "05/17",
+          "marks": {}
+        }
+      ],
+      "id": 2
+    },
+    {
+      "subjectName": "Biology",
+      "teacher": "Richrdson",
+      "room": "43",
+      "description": "",
+      "averageMarks": {
+        "3c42fd20-7599-11e9-8170-bdb379b456bd": "8.0",
+        "e8409750-764c-11e9-97f9-e9db76c7e9a5": 0,
+        "fb5bcbc0-764c-11e9-97f9-e9db76c7e9a5": 0,
+        "7bf85bc0-7686-11e9-a0a6-4b167bd2ddc5": 0
+      },
+      "journal": [
+        {
+          "date": "05/17",
+          "marks": {
+            "3c42fd20-7599-11e9-8170-bdb379b456bd": "8"
+          }
+        }
+      ],
+      "id": 3
+    },
+    {
+      "subjectName": "Physics",
+      "teacher": "Franklin",
+      "room": "64",
+      "description": "",
+      "averageMarks": {
+        "3c42fd20-7599-11e9-8170-bdb379b456bd": "8.0",
+        "e8409750-764c-11e9-97f9-e9db76c7e9a5": 0,
+        "fb5bcbc0-764c-11e9-97f9-e9db76c7e9a5": 0,
+        "7bf85bc0-7686-11e9-a0a6-4b167bd2ddc5": 0
+      },
+      "journal": [
+        {
+          "date": "05/17",
+          "marks": {}
+        },
+        {
+          "date": "05/18",
+          "marks": {
+            "3c42fd20-7599-11e9-8170-bdb379b456bd": "8"
+          }
+        },
+        {
+          "date": "05/19",
+          "marks": {}
+        }
+      ],
+      "id": 4
     }
   ]
 }

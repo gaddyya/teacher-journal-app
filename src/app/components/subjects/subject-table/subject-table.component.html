@@ -7,23 +7,24 @@
         <table class="subject-page__subject-table">
           <thead>
             <tr>
-              <td class="subect-page__suject-table cell">{{'First Name' | translate}}</td>
-              <td class="subect-page__suject-table cell">{{'Last Name' | translate}}</td>
-              <td class="subect-page__suject-table cell">{{'Average Mark' | translate}}</td>
+              <td class="subect-page__suject-table cell">{{"First Name" | translate}}</td>
+              <td class="subect-page__suject-table cell">{{"Last Name" | translate}}</td>
+              <td class="subect-page__suject-table cell">{{"Average Mark" | translate}}</td>
               <td class="subect-page__suject-table cell input" *ngFor="let item of subject.journal; let i = index">
                   <input class="input-cell" [(ngModel)]="item.date" name="i">
               </td>
             </tr>
           </thead>
-          <tr *ngFor="let student of subjectTable">
+          <tr *ngFor="let student of students">
             <td class="subect-page__suject-table cell">{{student.firstName}}</td>
             <td class="subect-page__suject-table cell">{{student.lastName}}</td>
-            <td class="subect-page__suject-table cell">{{student.averageMark}}</td>
+            <td class="subect-page__suject-table cell">{{subject.averageMarks[student.index]}}</td>
             <td class="subect-page__suject-table cell" *ngFor="let el of subject.journal; let i = index">
                 <input class="input-cell" [(ngModel)]="el.marks[student.index]" name="i">
             </td>
           </tr>
         </table>
     </div>
-    <button mat-raised-button class="subject-page__button" (click)="saveSubjectTable(); $event.stopPropagation()">{{'Save' | translate}}</button>
+    <button class="subject-page__delete-button" (click)="deleteLastDate()"><i class="fa fa-minus subject-page__delete-button__i" aria-hidden="true"></i></button>
+    <button mat-raised-button class="subject-page__button" (click)="saveSubject(); $event.stopPropagation()">{{"Save" | translate}}</button>
 </div>

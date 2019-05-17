@@ -1,4 +1,4 @@
-import { ISubjects } from "src/app/common/entities";
+import { ISubjects } from 'src/app/common/entities';
 import { SubjectsAction, SUBJECTS_ACTION } from '../actions/subjects.actions';
 
 const initialState: ISubjects = {
@@ -11,19 +11,19 @@ export function subjectsReducer (state: ISubjects = initialState, action: Subjec
       return {
         ...state,
         subjects: [...state.subjects, action.payload]
-      }
+      };
     case SUBJECTS_ACTION.LOAD_SUBJECTS:
       return {
         ...state,
         subjects: [...action.payload]
-      }
+      };
     case SUBJECTS_ACTION.UPDATE_SUBJECT:
-      const idx = state.subjects.findIndex( el => el.subjectName === action.payload.subjectName);
+      const idx: number = state.subjects.findIndex( el => el.subjectName === action.payload.subjectName);
       state.subjects[idx] = action.payload;
       return {
         ...state,
         subjects: [...state.subjects]
-      }
+      };
     default:
       return state;
   }

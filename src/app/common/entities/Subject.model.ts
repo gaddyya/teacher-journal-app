@@ -1,4 +1,5 @@
 export class Subject {
+    public averageMarks: Object = {};
     public journal: Array<{
         date: string,
         marks: {}

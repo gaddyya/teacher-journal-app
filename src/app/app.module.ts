@@ -1,10 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatTableModule, MatSortModule, MatButtonModule, MatInputModule, MatIconModule, MatButtonToggleModule } from '@angular/material';
-import { MatFormFieldModule } from '@angular/material/form-field';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './root/app.component';
 import { StudentFormComponent } from './components/students/student-form/student-form.component';
@@ -18,7 +12,6 @@ import { NavComponent } from './components/nav/nav.component';
 import { ButtonComponent } from './shared/components/button/button.component';
 import { NoContentComponent } from './components/no-content/no-content.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
-import { environment } from 'src/environments/environment';
 import { studentsReducer } from './redux/reducers/students.reducer';
 import { subjectsReducer } from './redux/reducers/subjects.reducer';
 import { StudentsEffects } from './redux/effects/students.effects';
@@ -32,6 +25,27 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { WarningPopUpComponent } from './components/warning-pop-up/warning-pop-up.component';
+import { AverageMarksPipe } from './common/pipes/average-marks.pipe';
+import { StatisticsDatabaseService } from './common/services/statistics-database.service';
+
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CdkTreeModule } from '@angular/cdk/tree';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {
+  MatTableModule,
+  MatSortModule,
+  MatButtonModule,
+  MatInputModule,
+  MatIconModule,
+  MatButtonToggleModule,
+  MatDialogModule,
+  MatTreeModule,
+  MatSelectModule,
+  MatCheckboxModule
+} from '@angular/material';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -52,35 +66,44 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     NoContentComponent,
     HighlightOurMainColorDirective,
     StatisticsComponent,
+    WarningPopUpComponent,
+    AverageMarksPipe,
   ],
   imports: [
-    MatTableModule,
-    MatIconModule,
     BrowserModule,
+    FormsModule,
+    CdkTreeModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatDialogModule,
+    MatCheckboxModule,
+    MatSortModule,
     MatButtonModule,
     MatButtonToggleModule,
+    MatTreeModule,
+    MatSelectModule,
     AppRoutingModule,
-    MatSortModule,
     BrowserAnimationsModule,
-    MatFormFieldModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
-    MatButtonModule,
-    MatInputModule,
     EffectsModule.forRoot([StudentsEffects, SubjectsEffects]),
     StoreModule.forRoot({studentsPage: studentsReducer, subjectsPage: subjectsReducer}),
-    environment.production.valueOf() ? [] :  StoreDevtoolsModule.instrument(),
+    StoreDevtoolsModule.instrument(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
   ],
+  entryComponents: [ SubjectTableComponent, WarningPopUpComponent ],
   providers: [
     DatePipe,
+    AverageMarksPipe,
+    StatisticsDatabaseService,
   ],
   bootstrap: [
     AppComponent,

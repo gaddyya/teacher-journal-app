@@ -1,16 +1,84 @@
 .statistics-page
-    max-width: 1100px
+    max-width: 1080px
     margin: 0 auto
+    border: 5px solid #696970
+    border-radius: 5px
+    border-spacing: 0
     text-align: center
     position: relative
     z-index: 1
+    display: grid
+    grid-template-columns: 0.7fr 1.3fr
+    grid-template-rows: 0.9fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+    grid-template-areas: "statistics-menu statistics-diagram" "statistics-menu statistics-diagram"    "statistics-menu statistics-diagram" "statistics-menu statistics-diagram" "statistics-menu     statistics-diagram" "statistics-menu statistics-diagram" "statistics-menu statistics-diagram"   "statistics-menu statistics-diagram"
 
-.statistics-page__statistics-content
-    max-width: 1080px
-    display: flex
-    align-items: center
-    justify-content: center
-    overflow: auto
-    position: relative
-    z-index: 1
-    top: -30px
+.statistics-menu
+    border: 5px solid #696970
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-template-rows: 0.1fr 1.9fr
+    grid-template-areas: "statistics-menu__students statistics-menu__subjects" "statistics-menu__content statistics-menu__content"
+    grid-area: statistics-menu
+
+.statistics-menu__students
+    border-right: 5px solid #696970
+    grid-area: statistics-menu__students
+
+.statistics-menu__subjects
+    border-left: 5px solid #696970
+    grid-area: statistics-menu__subjects
+
+.statistics-menu__content
+    border-top: 5px solid #696970
+    grid-area: statistics-menu__content
+
+.statistics-page__diagram
+    border: 5px solid #696970
+    border-spacing: 0
+    grid-area: statistics-diagram
+
+button.statistics-menu__button.mat-button
+    width: 100%
+    height: 100%
+    border-radius: 0 !important
+    border: 1px solid black
+
+.statistics-menu__button:hover
+    color: #fb6704
+
+.statistics-menu__dropdown
+    width: 80%
+    margin-left: -15px
+    color: white
+    text-align: center
+
+::ng-deep mat-label
+    color: white !important
+    font-size: 80%
+
+::ng-deep .mat-tree-node
+    background: #696970
+
+::ng-deep .mat-option-text
+    color: white
+
+::ng-deep .mat-primary .mat-pseudo-checkbox-checked
+    background: #fb6704 !important
+
+::ng-deep .mat-pseudo-checkbox
+    display: none !important
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background
+    background: #fb6704 !important
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background
+    background-color: #fb6704 !important
+
+::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background
+    background-color: #fb6704 !important
+
+::ng-deep .mat-select-panel
+    max-height: none !important
+
+::ng-deep .mat-select-value
+    color: white

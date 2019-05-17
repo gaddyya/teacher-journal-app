@@ -44,7 +44,6 @@ export class StudentFormComponent implements OnInit {
 
     if ((this.addStudentForm.value.firstName !== '') && (this.addStudentForm.value.lastName !== '')) {
       this.dataService.addStudentThroughHttp(student).subscribe( (data) => {
-        console.log(data);
         this.store.dispatch(new AddStudent(<Student>data));
       });
       this.router.navigate(['students']);
