@@ -1,0 +1,41 @@
+<div class="subject-form">
+    <div class="subject-form__form">
+      <form [formGroup]="addSubjectForm">
+        <h3>{{"Add New Subject" | translate}}:</h3>
+        <mat-form-field>
+          <input class="subject-form__input" formControlName='subjectName' matInput placeholder="{{'Subject Name' | translate}}" [errorStateMatcher]="matcher">
+          <mat-error *ngIf="addSubjectForm.controls.subjectName.hasError('pattern') && !addSubjectForm.controls.subjectName.hasError('required')">
+            {{"Please input only" | translate}} <strong>{{"letter" | translate}}</strong>
+          </mat-error>
+          <mat-error *ngIf="addSubjectForm.controls.subjectName.hasError('required')">
+            {{"Subject name is" | translate}} <strong>{{"required" | translate}}</strong>
+          </mat-error>
+        </mat-form-field>
+        <p></p>
+        <mat-form-field>
+          <input class="subject-form__input" matInput placeholder="{{'Teacher' | translate}}" formControlName="teacher" [errorStateMatcher]="matcher">
+          <mat-error *ngIf="addSubjectForm.controls.teacher.hasError('pattern') && !addSubjectForm.controls.teacher.hasError('required')">
+            {{"Please input only" | translate}} <strong>{{"letter" | translate}}</strong>
+          </mat-error>
+          <mat-error *ngIf="addSubjectForm.controls.teacher.hasError('required')">
+            {{"Last Name is" | translate}} <strong>{{"required" | translate}}</strong>
+          </mat-error>
+        </mat-form-field>
+        <p></p>
+        <mat-form-field>
+          <input class="subject-form__input" matInput placeholder="{{'Room' | translate}}" formControlName="room" >
+          <mat-error *ngIf="addSubjectForm.controls.room.hasError('pattern') && !addSubjectForm.controls.room.hasError('required')">
+            P{{"lease input only" | translate}} <strong>{{"number" | translate}}</strong>
+          </mat-error>
+        </mat-form-field>
+        <p></p>
+        <mat-form-field>
+          <input class="subject-form__input" matInput placeholder="{{'Description' | translate}}" formControlName="description">
+        </mat-form-field>
+        <p></p>
+        <button class="subject-form__button" mat-raised-button type="submit" (click)=saveData()>{{"Save" | translate}}</button>
+        <p></p>
+      </form>
+    </div>
+  </div>
+  <router-outlet></router-outlet>

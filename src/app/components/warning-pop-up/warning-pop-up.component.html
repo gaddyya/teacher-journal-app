@@ -1,0 +1,32 @@
+<div class="warningPopUp">
+  <h1 mat-dialog-title>Hi <span class="warningPopUp__nameTeacher">{{data.name}}</span></h1>
+  
+  <ng-container *ngIf="data.date">
+    <div mat-dialog-content>
+      <p>You should change <strong>here the last date</strong>, because it duplicate. On the other hand you should it do by yourself at the table</p> 
+      <p>Please provide it in correct format date <strong>MM/dd</strong></p>
+      <mat-form-field *ngIf="data.date" class="warningPopUp__actualDate">
+        <input matInput [(ngModel)]="data.date">
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button class="warningPopUp__button" mat-button (click)="onNoClick()">No Thanks</button>
+      <button class="warningPopUp__button" mat-button [mat-dialog-close]="data.date" cdkFocusInitial>Ok</button>
+    </div>
+  </ng-container>
+  
+
+  <ng-container *ngIf="!(data.subjectName === undefined)">
+    <div mat-dialog-content>
+      <p>You should change <strong>here the subject Name</strong>, because it duplicate. On the other hand you should it do by yourself at the table</p> 
+      <mat-form-field *ngIf="data.subjectName" class="warningPopUp__actualDate">
+        <input matInput [(ngModel)]="data.subjectName">
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button class="warningPopUp__button" mat-button (click)="onNoClick()">No Thanks</button>
+      <button class="warningPopUp__button" mat-button [mat-dialog-close]="data.subjectName" cdkFocusInitial>Ok</button>
+    </div>
+  </ng-container>
+
+</div>

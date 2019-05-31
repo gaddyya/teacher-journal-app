@@ -1,0 +1,31 @@
+  <div class="stutent-page__student-table">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+          <ng-container matColumnDef="id">
+            <mat-header-cell class="student-page__header-cell" appHighlightOurMainColor *matHeaderCellDef mat-sort-header> <h3>{{"ID" | translate}}</h3> </mat-header-cell>
+            <mat-cell class="student-page__body-cell" *matCellDef="let element"> {{element.id}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="firstName">
+            <mat-header-cell class="student-page__header-cell" appHighlightOurMainColor *matHeaderCellDef mat-sort-header> <h3>{{"First Name" | translate}}</h3> </mat-header-cell>
+            <mat-cell class="student-page__body-cell" *matCellDef="let element"> {{element.firstName}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="lastName">
+            <mat-header-cell class="student-page__header-cell" appHighlightOurMainColor *matHeaderCellDef mat-sort-header> <h3>{{"Last Name" | translate}}</h3> </mat-header-cell>
+            <mat-cell class="student-page__body-cell" *matCellDef="let element"> {{element.lastName}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="address">
+            <mat-header-cell class="student-page__header-cell" appHighlightOurMainColor *matHeaderCellDef> <h3>{{"Address" | translate}}</h3> </mat-header-cell>
+            <mat-cell class="student-page__body-cell" *matCellDef="let element"> {{element.address}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+              <mat-header-cell class="student-page__header-cell" appHighlightOurMainColor *matHeaderCellDef> <h3>{{"Description" | translate}}</h3> </mat-header-cell>
+              <mat-cell class="student-page__body-cell" *matCellDef="let element"> {{element.description}} </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </table>
+  </div>
